@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.0",
+  "name": "progress",
+  "title": "Progress",
+  "type": "component",
+  "description": "A progress bar that displays completion status for a task or process.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "label"
+  ],
+  "files": [
+    {
+      "path": "files/progress.ts",
+      "target": "src/components/ui/progress.ts",
+      "type": "component",
+      "sourcePath": "files/progress.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Progress displays a horizontal bar indicating the completion status of a task. Supports optional label and percentage display.",
+    "usage": "Progress({ value: 60, max: 100, label: 'Uploading...', showValue: true })",
+    "accessibility": "Uses the 'progressbar' accessibility role. Provide an accessibilityLabel for screen readers when no visible label is present."
+  },
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "required": false,
+      "default": 0,
+      "description": "Current progress value (0 to max)"
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false,
+      "default": 100,
+      "description": "Maximum progress value"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Optional text label displayed above the progress bar"
+    },
+    {
+      "name": "showValue",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Whether to display the current percentage value next to the label"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Custom accessibility label for screen readers. Defaults to label or 'Progress X%'."
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Progress",
+      "code": "Progress({ value: 60 })"
+    },
+    {
+      "name": "with-label",
+      "title": "Progress with Label",
+      "code": "Progress({ value: 75, label: 'Downloading...', showValue: true })"
+    },
+    {
+      "name": "custom-max",
+      "title": "Progress with Custom Max",
+      "code": "Progress({ value: 3, max: 5, label: 'Steps completed', showValue: true })"
+    },
+    {
+      "name": "indeterminate",
+      "title": "Zero Progress (Indeterminate Start)",
+      "code": "Progress({ label: 'Loading...', showValue: false })"
+    }
+  ],
+  "agent": {
+    "summary": "Progress displays a horizontal bar showing task completion status.",
+    "useWhen": [
+      "File upload progress",
+      "Multi-step form completion",
+      "Download indicators",
+      "Loading states with known totals"
+    ],
+    "requiredImports": [
+      "Progress from '@/components/ui/progress'"
+    ],
+    "commonCombinations": [
+      "Progress + Card",
+      "Progress + Text",
+      "Progress + Button"
+    ],
+    "layoutHints": [
+      "Place Progress below a label and above action buttons",
+      "Use full width inside cards or containers"
+    ],
+    "accessibilityChecklist": [
+      "Always provide a label or accessibilityLabel",
+      "Value changes should be announced to screen readers",
+      "Use meaningful max values that match the user's mental model"
+    ]
+  }
+}
