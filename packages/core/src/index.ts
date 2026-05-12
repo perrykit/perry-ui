@@ -11,5 +11,6 @@ export { createVariants, resolveRadius, resolveFontSize, resolveColor } from "./
 export type { WidgetHandle } from "./platform"
 export { applyStyles, applyBg, applyTextColor, applyBorderColor, applyBorderWidth, applyRadius, applyFontSize, applyFontWeight, applyFontBold, applyEdgeInsets, applyOpacity, applyWidth, applyHeight, applyButtonBg, applyButtonTextColor, applyButtonBordered } from "./platform"
 export { composeStyles, withPadding, withPaddingXY } from "./compose"
-export { setAccessibilityLabel, setAccessibilityRole } from "./accessibility"
+export type { A11yRole } from "./accessibility"
+export { setAccessibilityLabel, setAccessibilityRole, setLiveRegion } from "./accessibility"
 export { COMPAT, checkFeature } from "./compat"

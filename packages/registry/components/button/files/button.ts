@@ -1,11 +1,9 @@
 import { Button as PerryButton } from "perry/ui"
-import { buttonSetBordered } from "perry/ui"
 import type { WidgetHandle } from "@/lib/perry-ui/platform"
-import { applyStyles, applyButtonBg, applyButtonTextColor, applyButtonBordered, applyHeight, applyEdgeInsets } from "@/lib/perry-ui/platform"
+import { applyStyles, applyButtonBordered } from "@/lib/perry-ui/platform"
 import { createVariants } from "@/lib/perry-ui/variants"
-import type { StyleObject } from "@/lib/perry-ui/variants"
 import { useTheme } from "@/lib/perry-ui/theme"
-import type { ThemeTokens } from "@/lib/perry-ui/tokens"
+import { setAccessibilityLabel, setAccessibilityRole } from "@/lib/perry-ui/accessibility"
 
 export type ButtonVariant = "default" | "secondary" | "destructive" | "outline" | "ghost" | "link"
 export type ButtonSize = "sm" | "md" | "lg" | "icon"
@@ -88,6 +86,11 @@ export function Button(props: ButtonProps): WidgetHandle {
   if (props.disabled) {
     applyStyles(button, { opacity: 0.5 }, theme)
   }
+
+  if (props.accessibilityLabel) {
+    setAccessibilityLabel(button, props.accessibilityLabel)
+  }
+  setAccessibilityRole(button, "button")
 
   return button
 }
