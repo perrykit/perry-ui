@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0",
+  "name": "select",
+  "title": "Select",
+  "type": "component",
+  "description": "A native dropdown select wrapping Perry's Picker widget.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/select.ts",
+      "target": "src/components/ui/select.ts",
+      "type": "component",
+      "sourcePath": "files/select.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Native dropdown select using Perry's Picker widget",
+    "usage": "Select({ options: [{label: 'A', value: 'a'}, {label: 'B', value: 'b'}], onChange: (v) => selected.set(v) })",
+    "accessibility": "Pair with Label for accessible form fields.",
+    "platformNotes": {
+      "macos": "Uses native NSPopUpButton",
+      "ios": "Uses native UIPickerView",
+      "web": "Renders as select element"
+    }
+  },
+  "props": [
+    {
+      "name": "options",
+      "type": "SelectOption[]",
+      "required": true,
+      "description": "Array of options with label and value"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "description": "Currently selected value"
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "description": "Placeholder text when no option is selected"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable the select"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": false,
+      "description": "Change handler called with selected value"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Screen reader label"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Select",
+      "code": "Select({ options: [{label: 'A', value: 'a'}, {label: 'B', value: 'b'}], onChange: (v) => selected.set(v) })"
+    }
+  ],
+  "agent": {
+    "summary": "Native dropdown select for choosing from a list of options",
+    "useWhen": [
+      "Dropdown selections",
+      "Choosing from predefined options",
+      "Form selects"
+    ],
+    "doNotUseWhen": [
+      "Free-form text input (use Input)",
+      "Toggle between two states (use Checkbox)"
+    ],
+    "requiredImports": [
+      "Select from '@/components/ui/select'"
+    ],
+    "commonCombinations": [
+      "Select + Label",
+      "Select + Button",
+      "Select + Card"
+    ],
+    "layoutHints": [
+      "Always pair with Label",
+      "Stack vertically in forms"
+    ],
+    "accessibilityChecklist": [
+      "Pair with visible label",
+      "Provide meaningful option labels"
+    ]
+  }
+}
