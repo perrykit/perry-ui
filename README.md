@@ -37,13 +37,26 @@ bun run typecheck              # TypeScript type checking
 
 | Component | Description |
 |---|---|
+| Alert | Alert message with title/description |
+| Avatar | User avatar with image or initials fallback |
+| Badge | Status indicator with variants |
 | Button | Native button with variants and sizes |
 | Card | Container with header, content, footer |
-| Input | Styled text input field |
+| Checkbox | Boolean selection control with label |
+| Dialog | Modal overlay with header, content, footer |
+| Input | Styled text input with error state |
 | Label | Styled text label |
-| Badge | Status indicator with variants |
-| Alert | Alert message with title/description |
+| Progress | Horizontal progress bar with label |
+| Radio | Mutually exclusive option group |
+| Select | Native dropdown using Perry's Picker |
 | Separator | Horizontal/vertical divider |
+| Sheet | Sliding panel overlay (left/right/top/bottom) |
+| Skeleton | Loading placeholder with shape variants |
+| Switch | Toggle control for immediate settings |
+| Tabs | Tab navigation with content panels |
+| Textarea | Multiline text input with error state |
+| Toast | Notification with auto-dismiss and variants |
+| Tooltip | Hover tooltip for contextual information |
 
 ## Blocks
 
