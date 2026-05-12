@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0",
+  "name": "alert",
+  "title": "Alert",
+  "type": "component",
+  "description": "Displays an alert message with optional title and description.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/alert.ts",
+      "target": "src/components/ui/alert.ts",
+      "type": "component",
+      "sourcePath": "files/alert.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Alert shows important messages to the user. Use for validation errors, warnings, and informational notices.",
+    "usage": "Alert({ title: 'Heads up', description: 'Your session will expire in 5 minutes.' })",
+    "accessibility": "Alerts should use appropriate ARIA roles. Ensure alert text is clear."
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "AlertVariant",
+      "required": false,
+      "default": "default",
+      "description": "Visual intent"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "description": "Alert title"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Alert body text"
+    },
+    {
+      "name": "children",
+      "type": "WidgetHandle[]",
+      "required": false,
+      "description": "Additional content"
+    }
+  ],
+  "variants": [
+    {
+      "name": "variant",
+      "values": [
+        "default",
+        "destructive"
+      ],
+      "defaultValue": "default"
+    }
+  ],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Default Alert",
+      "code": "Alert({ title: 'Heads up!', description: 'You can customize every generated file.' })"
+    },
+    {
+      "name": "destructive",
+      "title": "Destructive Alert",
+      "code": "Alert({ variant: 'destructive', title: 'Error', description: 'Your session has expired. Please log in again.' })"
+    }
+  ],
+  "agent": {
+    "summary": "Alert displays important messages to the user.",
+    "useWhen": [
+      "Form validation errors",
+      "Operation warnings",
+      "Informational notices",
+      "Critical error messages"
+    ],
+    "requiredImports": [
+      "Alert from '@/components/ui/alert'"
+    ],
+    "commonCombinations": [
+      "Alert + Card",
+      "Alert + Form"
+    ],
+    "layoutHints": [
+      "Place above or near the related content",
+      "Use destructive variant sparingly"
+    ],
+    "accessibilityChecklist": [
+      "Use clear title text",
+      "Provide actionable description"
+    ]
+  }
+}

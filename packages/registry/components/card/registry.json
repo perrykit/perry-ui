@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0",
+  "name": "card",
+  "title": "Card",
+  "type": "component",
+  "description": "A container card with header, content, and footer sections.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/card.ts",
+      "target": "src/components/ui/card.ts",
+      "type": "component",
+      "sourcePath": "files/card.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Card groups related content with a styled container. Use CardHeader, CardContent, and CardFooter for structured layouts.",
+    "usage": "Card({ children: [CardHeader({ title: 'Title' }), CardContent({ children: [Text('Content')] })] })",
+    "accessibility": "Cards are semantic containers. Ensure headings are properly labeled.",
+    "platformNotes": {
+      "macos": "Renders as a VStack with native styling.",
+      "web": "Renders as a styled container div."
+    }
+  },
+  "props": [
+    {
+      "name": "children",
+      "type": "WidgetHandle[]",
+      "required": false,
+      "description": "Card body children"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Card",
+      "code": "Card({\n  children: [\n    CardHeader({ title: 'Card Title', description: 'Card description' }),\n    CardContent({ children: [Text('Card content goes here.')] }),\n    CardFooter({ children: [Button({ children: 'Action' })] }),\n  ],\n})"
+    }
+  ],
+  "agent": {
+    "summary": "Card is a container for grouping related content and actions.",
+    "useWhen": [
+      "Displaying grouped information",
+      "Settings sections",
+      "Dashboard widgets",
+      "Form containers"
+    ],
+    "requiredImports": [
+      "Card, CardHeader, CardContent, CardFooter from '@/components/ui/card'"
+    ],
+    "commonCombinations": [
+      "Card + Button",
+      "Card + Input",
+      "Card + Badge"
+    ],
+    "layoutHints": [
+      "Use Card for distinct sections in a dashboard",
+      "Stack cards vertically for a feed layout"
+    ],
+    "accessibilityChecklist": [
+      "Use CardTitle for headings",
+      "Keep card content scannable"
+    ]
+  }
+}

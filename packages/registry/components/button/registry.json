@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0",
+  "name": "button",
+  "title": "Button",
+  "type": "component",
+  "description": "A native Perry button with variants, sizes, tokens, and interaction states.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/button.ts",
+      "target": "src/components/ui/button.ts",
+      "type": "component",
+      "sourcePath": "files/button.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Use Button for primary actions, secondary actions, icon actions, and destructive confirmations.",
+    "usage": "Button({ children: 'Save', variant: 'default', onPress: () => {} })",
+    "accessibility": "Buttons must have visible text or an accessibility label.",
+    "platformNotes": {
+      "macos": "Uses native AppKit button behavior through Perry.",
+      "ios": "Uses native UIKit touch behavior through Perry.",
+      "linux": "Uses native GTK button behavior through Perry.",
+      "windows": "Uses current Perry Windows backend behavior.",
+      "web": "Rendered as DOM button through Perry web target."
+    }
+  },
+  "props": [
+    {
+      "name": "children",
+      "type": "string",
+      "required": false,
+      "description": "Button label text"
+    },
+    {
+      "name": "variant",
+      "type": "ButtonVariant",
+      "required": false,
+      "default": "default",
+      "description": "Visual style variant"
+    },
+    {
+      "name": "size",
+      "type": "ButtonSize",
+      "required": false,
+      "default": "md",
+      "description": "Button height and padding"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable interaction"
+    },
+    {
+      "name": "onPress",
+      "type": "() => void",
+      "required": false,
+      "description": "Click handler"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Screen reader label"
+    }
+  ],
+  "variants": [
+    {
+      "name": "variant",
+      "values": [
+        "default",
+        "secondary",
+        "destructive",
+        "outline",
+        "ghost",
+        "link"
+      ],
+      "defaultValue": "default"
+    },
+    {
+      "name": "size",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "icon"
+      ],
+      "defaultValue": "md"
+    }
+  ],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Default Button",
+      "code": "Button({ children: 'Click me' })"
+    },
+    {
+      "name": "outline",
+      "title": "Outline Button",
+      "code": "Button({ children: 'Outline', variant: 'outline' })"
+    },
+    {
+      "name": "destructive",
+      "title": "Destructive Button",
+      "code": "Button({ children: 'Delete', variant: 'destructive' })"
+    },
+    {
+      "name": "sizes",
+      "title": "Button Sizes",
+      "code": "HStack(8, [\n  Button({ children: 'Small', size: 'sm' }),\n  Button({ children: 'Medium', size: 'md' }),\n  Button({ children: 'Large', size: 'lg' }),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Use Button for actions the user can trigger.",
+    "useWhen": [
+      "Saving data",
+      "Opening dialogs",
+      "Submitting forms",
+      "Triggering app commands"
+    ],
+    "doNotUseWhen": [
+      "Static labels",
+      "Navigation links without action semantics"
+    ],
+    "requiredImports": [
+      "Button from '@/components/ui/button'"
+    ],
+    "commonCombinations": [
+      "Button + Card",
+      "Button + Dialog",
+      "Button + Input"
+    ],
+    "layoutHints": [
+      "Place primary action on the right in desktop dialogs",
+      "Use destructive variant only for irreversible actions"
+    ],
+    "accessibilityChecklist": [
+      "Provide visible label",
+      "Ensure disabled state is clear",
+      "Avoid icon-only buttons without labels"
+    ]
+  }
+}

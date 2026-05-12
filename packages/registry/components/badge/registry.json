@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0",
+  "name": "badge",
+  "title": "Badge",
+  "type": "component",
+  "description": "A small status indicator with variant styling.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/badge.ts",
+      "target": "src/components/ui/badge.ts",
+      "type": "component",
+      "sourcePath": "files/badge.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Badge displays a short status label with background color. Use for tags, statuses, and categories.",
+    "usage": "Badge({ children: 'New', variant: 'default' })",
+    "accessibility": "Badge text should be concise and meaningful."
+  },
+  "props": [
+    {
+      "name": "children",
+      "type": "string",
+      "required": false,
+      "description": "Badge text"
+    },
+    {
+      "name": "variant",
+      "type": "BadgeVariant",
+      "required": false,
+      "default": "default",
+      "description": "Visual style variant"
+    }
+  ],
+  "variants": [
+    {
+      "name": "variant",
+      "values": [
+        "default",
+        "secondary",
+        "destructive",
+        "outline"
+      ],
+      "defaultValue": "default"
+    }
+  ],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Default Badge",
+      "code": "Badge({ children: 'New' })"
+    },
+    {
+      "name": "variants",
+      "title": "Badge Variants",
+      "code": "HStack(8, [\n  Badge({ children: 'Default' }),\n  Badge({ children: 'Secondary', variant: 'secondary' }),\n  Badge({ children: 'Destructive', variant: 'destructive' }),\n  Badge({ children: 'Outline', variant: 'outline' }),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Badge shows a short status or category label.",
+    "useWhen": [
+      "Status indicators",
+      "Category tags",
+      "Feature flags",
+      "Version labels"
+    ],
+    "requiredImports": [
+      "Badge from '@/components/ui/badge'"
+    ],
+    "commonCombinations": [
+      "Badge + Card",
+      "Badge + List items"
+    ],
+    "layoutHints": [
+      "Use sparingly for important status information"
+    ],
+    "accessibilityChecklist": [
+      "Keep badge text short and descriptive"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "perry-ui",
+  "version": "0.1.0",
+  "homepage": "https://perry-ui.dev",
+  "registryBaseUrl": "https://perry-ui.dev/r",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": ["0.5.x"],
+    "notes": "Initial release. Tested against Perry 0.5.x."
+  },
+  "items": []
+}

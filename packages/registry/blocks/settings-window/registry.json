@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "name": "settings-window",
+  "title": "Settings Window",
+  "type": "block",
+  "description": "A complete settings window with sections, toggles, inputs, and actions.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label",
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "files/settings-window.ts",
+      "target": "src/components/blocks/settings-window.ts",
+      "type": "component",
+      "sourcePath": "files/settings-window.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "A ready-to-use settings window block with card-based sections, toggle switches, text inputs, and action buttons. Demonstrates how Perry UI components compose into a real application screen.",
+    "usage": "SettingsWindow({ title: 'Preferences', width: 500, height: 600 })",
+    "accessibility": "Each settings row has a label. Toggle controls have accessible labels.",
+    "platformNotes": {
+      "macos": "Opens a native NSWindow with AppKit controls.",
+      "web": "Opens a new browser window or tab."
+    }
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "default": "Settings",
+      "description": "Window title"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false,
+      "default": "500",
+      "description": "Window width"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false,
+      "default": "600",
+      "description": "Window height"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Settings Window",
+      "code": "SettingsWindow()"
+    },
+    {
+      "name": "custom",
+      "title": "Custom Settings",
+      "code": "SettingsWindow({ title: 'Preferences', width: 600, height: 500 })"
+    }
+  ],
+  "agent": {
+    "summary": "Settings Window is a complete settings screen block using Card, Toggle, Input, Label, and Button components.",
+    "useWhen": [
+      "Building app preferences",
+      "Creating settings screens",
+      "Need a ready-made settings layout"
+    ],
+    "requiredImports": [
+      "SettingsWindow from '@/components/blocks/settings-window'"
+    ],
+    "commonCombinations": [
+      "Settings Window is standalone"
+    ],
+    "layoutHints": [
+      "Opens as a separate window",
+      "Use as-is or modify the source after installing"
+    ],
+    "accessibilityChecklist": [
+      "All controls have labels",
+      "Sections use Card with titles"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "graphite",
+  "title": "Graphite",
+  "description": "Warm dark graphite palette.",
+  "color": {
+    "background": { "r": 0.106, "g": 0.106, "b": 0.118, "a": 1 },
+    "foreground": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 },
+    "card": { "r": 0.106, "g": 0.106, "b": 0.118, "a": 1 },
+    "cardForeground": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 },
+    "popover": { "r": 0.106, "g": 0.106, "b": 0.118, "a": 1 },
+    "popoverForeground": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 },
+    "primary": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 },
+    "primaryForeground": { "r": 0.106, "g": 0.106, "b": 0.118, "a": 1 },
+    "secondary": { "r": 0.184, "g": 0.184, "b": 0.196, "a": 1 },
+    "secondaryForeground": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 },
+    "muted": { "r": 0.184, "g": 0.184, "b": 0.196, "a": 1 },
+    "mutedForeground": { "r": 0.588, "g": 0.588, "b": 0.612, "a": 1 },
+    "accent": { "r": 0.184, "g": 0.184, "b": 0.196, "a": 1 },
+    "accentForeground": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 },
+    "destructive": { "r": 0.937, "g": 0.267, "b": 0.267, "a": 1 },
+    "destructiveForeground": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 },
+    "border": { "r": 0.224, "g": 0.224, "b": 0.239, "a": 1 },
+    "input": { "r": 0.224, "g": 0.224, "b": 0.239, "a": 1 },
+    "ring": { "r": 0.922, "g": 0.922, "b": 0.929, "a": 1 }
+  },
+  "radius": { "none": 0, "sm": 4, "md": 8, "lg": 12, "xl": 16, "full": 9999 },
+  "spacing": { "0": 0, "1": 4, "2": 8, "3": 12, "4": 16, "5": 20, "6": 24, "8": 32, "10": 40, "12": 48 },
+  "typography": { "fontFamily": "system", "xs": 12, "sm": 14, "base": 16, "lg": 18, "xl": 20, "xxl": 24 },
+  "border": { "thin": 1, "medium": 2 },
+  "shadow": { "none": null, "sm": { "x": 0, "y": 1, "blur": 2, "opacity": 0.2 }, "md": { "x": 0, "y": 4, "blur": 12, "opacity": 0.25 } },
+  "duration": { "fast": 120, "normal": 180, "slow": 240 }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "zinc",
+  "title": "Zinc",
+  "description": "Neutral zinc palette inspired by shadcn/ui. The default theme.",
+  "color": {
+    "background": { "r": 0.98, "g": 0.98, "b": 0.98, "a": 1 },
+    "foreground": { "r": 0.094, "g": 0.094, "b": 0.106, "a": 1 },
+    "card": { "r": 1, "g": 1, "b": 1, "a": 1 },
+    "cardForeground": { "r": 0.094, "g": 0.094, "b": 0.106, "a": 1 },
+    "popover": { "r": 1, "g": 1, "b": 1, "a": 1 },
+    "popoverForeground": { "r": 0.094, "g": 0.094, "b": 0.106, "a": 1 },
+    "primary": { "r": 0.094, "g": 0.094, "b": 0.106, "a": 1 },
+    "primaryForeground": { "r": 0.98, "g": 0.98, "b": 0.98, "a": 1 },
+    "secondary": { "r": 0.957, "g": 0.957, "b": 0.961, "a": 1 },
+    "secondaryForeground": { "r": 0.094, "g": 0.094, "b": 0.106, "a": 1 },
+    "muted": { "r": 0.957, "g": 0.957, "b": 0.961, "a": 1 },
+    "mutedForeground": { "r": 0.443, "g": 0.443, "b": 0.478, "a": 1 },
+    "accent": { "r": 0.957, "g": 0.957, "b": 0.961, "a": 1 },
+    "accentForeground": { "r": 0.094, "g": 0.094, "b": 0.106, "a": 1 },
+    "destructive": { "r": 0.937, "g": 0.267, "b": 0.267, "a": 1 },
+    "destructiveForeground": { "r": 1, "g": 1, "b": 1, "a": 1 },
+    "border": { "r": 0.898, "g": 0.898, "b": 0.906, "a": 1 },
+    "input": { "r": 0.898, "g": 0.898, "b": 0.906, "a": 1 },
+    "ring": { "r": 0.094, "g": 0.094, "b": 0.106, "a": 1 }
+  },
+  "radius": { "none": 0, "sm": 4, "md": 8, "lg": 12, "xl": 16, "full": 9999 },
+  "spacing": { "0": 0, "1": 4, "2": 8, "3": 12, "4": 16, "5": 20, "6": 24, "8": 32, "10": 40, "12": 48 },
+  "typography": { "fontFamily": "system", "xs": 12, "sm": 14, "base": 16, "lg": 18, "xl": 20, "xxl": 24 },
+  "border": { "thin": 1, "medium": 2 },
+  "shadow": {
+    "none": null,
+    "sm": { "x": 0, "y": 1, "blur": 2, "opacity": 0.08 },
+    "md": { "x": 0, "y": 4, "blur": 12, "opacity": 0.1 }
+  },
+  "duration": { "fast": 120, "normal": 180, "slow": 240 }
+}

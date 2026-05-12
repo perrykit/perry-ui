@@ -1,0 +1,17 @@
+{
+  "name": "perry-ui-registry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Perry UI - shadcn-style component registry for Perry native TypeScript apps",
+  "scripts": {
+    "build:registry": "bun run scripts/build-registry.ts",
+    "validate:registry": "bun run scripts/validate-registry.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo \"lint placeholder\"",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/bun": "^1.1.0"
+  }
+}

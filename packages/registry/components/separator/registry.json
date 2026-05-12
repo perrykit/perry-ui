@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0",
+  "name": "separator",
+  "title": "Separator",
+  "type": "component",
+  "description": "A horizontal or vertical divider line.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/separator.ts",
+      "target": "src/components/ui/separator.ts",
+      "type": "component",
+      "sourcePath": "files/separator.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Separator divides sections of content with a thin line.",
+    "usage": "Separator()",
+    "accessibility": "Separators are decorative. Use semantic headings for actual section breaks."
+  },
+  "props": [
+    {
+      "name": "orientation",
+      "type": "'horizontal' | 'vertical'",
+      "required": false,
+      "default": "horizontal",
+      "description": "Line direction"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Separator",
+      "code": "VStack(8, [\n  Text('Section 1'),\n  Separator(),\n  Text('Section 2'),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Separator visually divides content sections.",
+    "useWhen": [
+      "Separating content sections",
+      "Dividing form groups",
+      "Creating visual breaks"
+    ],
+    "requiredImports": [
+      "Separator from '@/components/ui/separator'"
+    ],
+    "commonCombinations": [
+      "Separator + Card",
+      "Separator + VStack"
+    ],
+    "layoutHints": [
+      "Use between logical groups in VStack or HStack"
+    ],
+    "accessibilityChecklist": [
+      "Separators are decorative; use headings for semantic section breaks"
+    ]
+  }
+}

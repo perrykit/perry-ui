@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0",
+  "name": "input",
+  "title": "Input",
+  "type": "component",
+  "description": "A styled text input field wrapping Perry's TextField.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/input.ts",
+      "target": "src/components/ui/input.ts",
+      "type": "component",
+      "sourcePath": "files/input.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Input wraps Perry's TextField with consistent styling, border, radius, and padding.",
+    "usage": "Input({ placeholder: 'Enter name...', onChange: (v) => name.set(v) })",
+    "accessibility": "Pair with Label for accessible form fields.",
+    "platformNotes": {
+      "macos": "Uses native NSTextField through Perry.",
+      "web": "Renders as styled input element."
+    }
+  },
+  "props": [
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "description": "Current input value"
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "description": "Placeholder text"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable input"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": false,
+      "description": "Change handler"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Screen reader label"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Input",
+      "code": "Input({ placeholder: 'Enter your name...' })"
+    },
+    {
+      "name": "with-label",
+      "title": "Input with Label",
+      "code": "VStack(4, [\n  Label({ children: 'Email' }),\n  Input({ placeholder: 'you@example.com' }),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Input is a styled text input for form fields.",
+    "useWhen": [
+      "Text entry in forms",
+      "Search fields",
+      "User input collection"
+    ],
+    "requiredImports": [
+      "Input from '@/components/ui/input'"
+    ],
+    "commonCombinations": [
+      "Input + Label",
+      "Input + Button",
+      "Input + Card"
+    ],
+    "layoutHints": [
+      "Always pair with Label",
+      "Stack vertically in forms"
+    ],
+    "accessibilityChecklist": [
+      "Pair with Label for visible label",
+      "Provide placeholder text"
+    ]
+  }
+}

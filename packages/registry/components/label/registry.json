@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0",
+  "name": "label",
+  "title": "Label",
+  "type": "component",
+  "description": "A styled text label for form fields and sections.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/label.ts",
+      "target": "src/components/ui/label.ts",
+      "type": "component",
+      "sourcePath": "files/label.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Label displays styled text for form fields, section titles, and UI descriptions.",
+    "usage": "Label({ children: 'Email address' })",
+    "accessibility": "Use Label to provide visible text labels for form controls."
+  },
+  "props": [
+    {
+      "name": "children",
+      "type": "string",
+      "required": false,
+      "description": "Label text"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Label",
+      "code": "Label({ children: 'Username' })"
+    }
+  ],
+  "agent": {
+    "summary": "Label provides styled text for form fields and sections.",
+    "useWhen": [
+      "Form field labels",
+      "Section headings in settings",
+      "Describing inputs and controls"
+    ],
+    "requiredImports": [
+      "Label from '@/components/ui/label'"
+    ],
+    "commonCombinations": [
+      "Label + Input",
+      "Label + Toggle",
+      "Label + Select"
+    ],
+    "layoutHints": [
+      "Place directly above or beside the associated control"
+    ],
+    "accessibilityChecklist": [
+      "Every form control should have an associated Label"
+    ]
+  }
+}
