@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "1.0",
+  "name": "checkbox",
+  "title": "Checkbox",
+  "type": "component",
+  "description": "A checkbox control for boolean selections with optional label.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "label"
+  ],
+  "files": [
+    {
+      "path": "files/checkbox.ts",
+      "target": "src/components/ui/checkbox.ts",
+      "type": "component",
+      "sourcePath": "files/checkbox.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Checkbox control for boolean selections with optional label",
+    "usage": "Checkbox({ label: 'Accept terms', onChange: (v) => accepted.set(v) })",
+    "accessibility": "Uses role 'checkbox'. Provide a label or accessibilityLabel for screen readers.",
+    "platformNotes": {
+      "macos": "Uses native AppKit toggle behavior through Perry.",
+      "ios": "Uses native UIKit toggle behavior through Perry.",
+      "linux": "Uses native GTK toggle behavior through Perry.",
+      "windows": "Uses current Perry Windows backend behavior.",
+      "web": "Rendered as styled checkbox element through Perry web target."
+    }
+  },
+  "props": [
+    {
+      "name": "checked",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Whether the checkbox is checked"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Label text displayed beside the checkbox"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable interaction and dim the checkbox"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: boolean) => void",
+      "required": false,
+      "description": "Callback when checked state changes"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Screen reader label (falls back to label if provided)"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Checkbox",
+      "code": "Checkbox({ label: 'Accept terms' })"
+    },
+    {
+      "name": "controlled",
+      "title": "Controlled Checkbox",
+      "code": "Checkbox({ checked: true, label: 'Subscribed', onChange: (v) => subscribed.set(v) })"
+    },
+    {
+      "name": "disabled",
+      "title": "Disabled Checkbox",
+      "code": "Checkbox({ label: 'Locked option', disabled: true })"
+    },
+    {
+      "name": "multiple",
+      "title": "Multiple Checkboxes",
+      "code": "VStack(8, [\n  Checkbox({ label: 'Option A', onChange: (v) => a.set(v) }),\n  Checkbox({ label: 'Option B', onChange: (v) => b.set(v) }),\n  Checkbox({ label: 'Option C', onChange: (v) => c.set(v) }),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Checkbox for boolean selections and form toggles",
+    "useWhen": [
+      "Accepting terms",
+      "Enabling/disabling features",
+      "Multi-select in forms"
+    ],
+    "doNotUseWhen": [
+      "Single mutually exclusive choice (use Radio)",
+      "Immediate toggle effect (use Switch)"
+    ],
+    "requiredImports": [
+      "Checkbox from '@/components/ui/checkbox'"
+    ],
+    "commonCombinations": [
+      "Checkbox + Label",
+      "Checkbox + Button",
+      "Multiple Checkboxes in VStack"
+    ],
+    "layoutHints": [
+      "Stack vertically for multiple checkboxes"
+    ],
+    "accessibilityChecklist": [
+      "Provide label text",
+      "Ensure visible checked state"
+    ]
+  }
+}
