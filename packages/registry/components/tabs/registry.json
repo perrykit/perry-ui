@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0",
+  "name": "tabs",
+  "title": "Tabs",
+  "type": "component",
+  "description": "Tab navigation for switching between content panels with active state tracking.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "path": "files/tabs.ts",
+      "target": "src/components/ui/tabs.ts",
+      "type": "component",
+      "sourcePath": "files/tabs.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Tabs provide tab navigation for switching between content panels. Use Tabs to organize content into selectable sections with an active tab indicator.",
+    "usage": "Tabs({ items: [{label: 'Tab 1', value: 't1', content: Text('Content 1')}] })",
+    "accessibility": "Tab triggers use role 'tab' and tab content uses role 'tabpanel'. Ensure each tab has a descriptive label.",
+    "platformNotes": {
+      "macos": "Renders as a segmented-style tab bar with native styling.",
+      "web": "Renders as a styled tab list with ARIA roles."
+    }
+  },
+  "props": [
+    {
+      "name": "items",
+      "type": "TabItem[]",
+      "required": true,
+      "description": "Array of tab items with label, value, and content"
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "required": false,
+      "description": "Initially active tab value; defaults to the first item"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": false,
+      "description": "Callback when the active tab changes"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Tabs",
+      "code": "Tabs({\n  items: [\n    { label: 'Account', value: 'account', content: Text('Account settings') },\n    { label: 'Profile', value: 'profile', content: Text('Profile settings') },\n    { label: 'Notifications', value: 'notifications', content: Text('Notification preferences') },\n  ],\n})"
+    },
+    {
+      "name": "with-default",
+      "title": "Tabs with Default Value",
+      "code": "Tabs({\n  defaultValue: 'profile',\n  items: [\n    { label: 'Account', value: 'account', content: Text('Account settings') },\n    { label: 'Profile', value: 'profile', content: Text('Profile settings') },\n  ],\n})"
+    },
+    {
+      "name": "with-onchange",
+      "title": "Tabs with Change Handler",
+      "code": "Tabs({\n  items: [\n    { label: 'Tab 1', value: 't1', content: Text('Content 1') },\n    { label: 'Tab 2', value: 't2', content: Text('Content 2') },\n  ],\n  onChange: (value) => { console.log('Active tab:', value) },\n})"
+    }
+  ],
+  "agent": {
+    "summary": "Tabs organize content into selectable sections with tab navigation.",
+    "useWhen": [
+      "Switching between related content views",
+      "Settings panels with multiple sections",
+      "Dashboard views with different data sets",
+      "Organizing form sections"
+    ],
+    "doNotUseWhen": [
+      "Only one section of content exists",
+      "Content should be visible simultaneously",
+      "Navigation between unrelated pages"
+    ],
+    "requiredImports": [
+      "Tabs, TabTrigger, TabContent from '@/components/ui/tabs'"
+    ],
+    "commonCombinations": [
+      "Tabs + Card",
+      "Tabs + Form inputs",
+      "Tabs + Badge for notification counts"
+    ],
+    "layoutHints": [
+      "Place tabs above the content area",
+      "Limit tabs to 5-7 items for usability",
+      "Use concise labels for tab triggers"
+    ],
+    "accessibilityChecklist": [
+      "Each tab trigger has a descriptive label",
+      "Active tab state is visually and programmatically indicated",
+      "Tab content uses the tabpanel role"
+    ]
+  }
+}
