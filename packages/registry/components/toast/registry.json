@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0",
+  "name": "toast",
+  "title": "Toast",
+  "type": "component",
+  "description": "A non-intrusive notification toast with variants and auto-dismiss support.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "files/toast.ts",
+      "target": "src/components/ui/toast.ts",
+      "type": "component",
+      "sourcePath": "files/toast.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Toast displays brief, non-blocking notifications to the user. Use for confirmations, success messages, and error alerts. Supports auto-dismiss via a configurable duration and manual dismiss via a close button.",
+    "usage": "Toast({ title: 'Saved', description: 'Your changes have been saved.', variant: 'success' })",
+    "accessibility": "Uses aria-live for screen reader announcements. Polite for default and success toasts, assertive for destructive toasts.",
+    "platformNotes": {
+      "macos": "Renders as a VStack with native styling and shadow.",
+      "web": "Renders as a styled container div with aria-live attributes."
+    }
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": true,
+      "description": "Toast title text"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Optional body text below the title"
+    },
+    {
+      "name": "variant",
+      "type": "ToastVariant",
+      "required": false,
+      "default": "default",
+      "description": "Visual intent variant"
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "required": false,
+      "default": "5000",
+      "description": "Auto-dismiss duration in milliseconds"
+    },
+    {
+      "name": "onDismiss",
+      "type": "() => void",
+      "required": false,
+      "description": "Callback when toast is dismissed"
+    }
+  ],
+  "variants": [
+    {
+      "name": "variant",
+      "values": [
+        "default",
+        "success",
+        "destructive"
+      ],
+      "defaultValue": "default"
+    }
+  ],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Default Toast",
+      "code": "Toast({ title: 'Event created', description: 'Monday, January 3rd at 6:00 PM' })"
+    },
+    {
+      "name": "success",
+      "title": "Success Toast",
+      "code": "Toast({ title: 'Changes saved', description: 'Your profile has been updated.', variant: 'success' })"
+    },
+    {
+      "name": "destructive",
+      "title": "Destructive Toast",
+      "code": "Toast({ title: 'Error', description: 'Failed to save changes. Please try again.', variant: 'destructive' })"
+    },
+    {
+      "name": "custom-duration",
+      "title": "Custom Duration Toast",
+      "code": "Toast({ title: 'Uploading...', description: 'This will disappear in 10 seconds.', duration: 10000 })"
+    },
+    {
+      "name": "with-provider",
+      "title": "Toast with Provider",
+      "code": "ToastProvider({\n  children: [\n    Toast({ title: 'First notification', variant: 'success' }),\n    Toast({ title: 'Second notification', variant: 'destructive' }),\n  ],\n})"
+    }
+  ],
+  "agent": {
+    "summary": "Toast displays brief, non-blocking notifications to the user with support for variants and auto-dismiss.",
+    "useWhen": [
+      "Confirming an action completed successfully",
+      "Displaying error messages without blocking the UI",
+      "Showing status updates or progress notifications",
+      "Alerting users to background events"
+    ],
+    "doNotUseWhen": [
+      "Critical errors requiring immediate user action (use Alert instead)",
+      "Persistent information that needs to stay on screen (use Card or inline text)"
+    ],
+    "requiredImports": [
+      "Toast, ToastProvider from '@/components/ui/toast'"
+    ],
+    "commonCombinations": [
+      "Toast + Button",
+      "Toast + Card",
+      "ToastProvider + Toast"
+    ],
+    "layoutHints": [
+      "Wrap multiple toasts in ToastProvider for automatic stacking",
+      "Position ToastProvider at the bottom-right or top-right of the viewport",
+      "Use destructive variant sparingly for genuine errors"
+    ],
+    "accessibilityChecklist": [
+      "Title text should be concise and descriptive",
+      "Destructive toasts use assertive aria-live for immediate announcement",
+      "Dismiss button has an accessibility label",
+      "Provide description for additional context"
+    ]
+  }
+}
