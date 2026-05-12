@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0",
+  "name": "skeleton",
+  "title": "Skeleton",
+  "type": "component",
+  "description": "A placeholder loading indicator that mimics the shape of content yet to load.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/skeleton.ts",
+      "target": "src/components/ui/skeleton.ts",
+      "type": "component",
+      "sourcePath": "files/skeleton.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Skeleton renders a muted placeholder matching the dimensions and shape of upcoming content. Use it to indicate loading states and reduce perceived latency.",
+    "usage": "Skeleton({ variant: 'text', width: 200 })",
+    "accessibility": "Skeleton uses the 'img' accessibility role with a hidden label so screen readers announce it as a loading placeholder without interrupting the content flow."
+  },
+  "props": [
+    {
+      "name": "width",
+      "type": "number",
+      "required": false,
+      "default": 100,
+      "description": "Width of the skeleton in pixels"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false,
+      "default": 16,
+      "description": "Height of the skeleton in pixels"
+    },
+    {
+      "name": "radius",
+      "type": "'none' | 'sm' | 'md' | 'lg' | 'full'",
+      "required": false,
+      "default": "md",
+      "description": "Border radius of the skeleton"
+    },
+    {
+      "name": "variant",
+      "type": "'text' | 'circular' | 'rectangular'",
+      "required": false,
+      "default": "rectangular",
+      "description": "Shape variant of the skeleton"
+    }
+  ],
+  "variants": [
+    {
+      "name": "variant",
+      "values": [
+        "text",
+        "circular",
+        "rectangular"
+      ],
+      "defaultValue": "rectangular"
+    }
+  ],
+  "examples": [
+    {
+      "name": "rectangular",
+      "title": "Rectangular Skeleton",
+      "code": "Skeleton({ variant: 'rectangular', width: 200, height: 100 })"
+    },
+    {
+      "name": "text",
+      "title": "Text Skeleton",
+      "code": "VStack(8, [\n  Skeleton({ variant: 'text', width: 240 }),\n  Skeleton({ variant: 'text', width: 180 }),\n  Skeleton({ variant: 'text', width: 200 }),\n])"
+    },
+    {
+      "name": "circular",
+      "title": "Circular Skeleton",
+      "code": "HStack(12, [\n  Skeleton({ variant: 'circular', width: 48, height: 48 }),\n  VStack(8, [\n    Skeleton({ variant: 'text', width: 120 }),\n    Skeleton({ variant: 'text', width: 80 }),\n  ]),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Skeleton renders a muted placeholder shape to indicate loading content.",
+    "useWhen": [
+      "Content loading states",
+      "Image placeholders",
+      "Text line placeholders",
+      "Avatar placeholders while loading profile data"
+    ],
+    "requiredImports": [
+      "Skeleton from '@/components/ui/skeleton'"
+    ],
+    "commonCombinations": [
+      "Skeleton + Card (loading card state)",
+      "Skeleton + VStack (stacked content loading)",
+      "Skeleton + HStack (avatar + text loading)"
+    ],
+    "layoutHints": [
+      "Match skeleton dimensions to the content it replaces",
+      "Use the text variant for paragraph and heading placeholders",
+      "Use the circular variant for avatar and icon placeholders"
+    ],
+    "accessibilityChecklist": [
+      "Skeleton uses role='img' with a hidden label",
+      "Replace skeletons with real content once loaded",
+      "Announce loading state to screen readers when appropriate"
+    ]
+  }
+}

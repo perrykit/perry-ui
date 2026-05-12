@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0",
+  "name": "radio",
+  "title": "Radio",
+  "type": "component",
+  "description": "A radio group for single selection from a list of mutually exclusive options.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "label"
+  ],
+  "files": [
+    {
+      "path": "files/radio.ts",
+      "target": "src/components/ui/radio.ts",
+      "type": "component",
+      "sourcePath": "files/radio.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Radio renders a group of mutually exclusive options with circular indicators. The selected option shows a primary-colored fill; unselected options show a muted border. Disabled options are dimmed with reduced opacity.",
+    "usage": "RadioGroup({ options: [{ label: 'Small', value: 'sm' }, { label: 'Medium', value: 'md' }, { label: 'Large', value: 'lg' }], value: 'md', onChange: (v) => size.set(v) })",
+    "accessibility": "Container uses role 'radiogroup'. Each item uses role 'radio'. Provide accessibilityLabel on the group for screen readers.",
+    "platformNotes": {
+      "macos": "Uses native AppKit radio button behavior through Perry.",
+      "ios": "Uses native UIKit selection behavior through Perry.",
+      "linux": "Uses native GTK radio button behavior through Perry.",
+      "windows": "Uses current Perry Windows backend behavior.",
+      "web": "Rendered as styled radio elements through Perry web target."
+    }
+  },
+  "props": [
+    {
+      "name": "options",
+      "type": "RadioOption[]",
+      "required": true,
+      "description": "Array of radio options with label, value, and optional disabled flag"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "description": "Currently selected value"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": false,
+      "description": "Callback when selection changes"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "description": "Group name for the radio set"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Screen reader label for the radio group"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Radio Group",
+      "code": "RadioGroup({\n  options: [\n    { label: 'Option A', value: 'a' },\n    { label: 'Option B', value: 'b' },\n    { label: 'Option C', value: 'c' },\n  ],\n  onChange: (v) => selected.set(v),\n})"
+    },
+    {
+      "name": "controlled",
+      "title": "Controlled Radio Group",
+      "code": "RadioGroup({\n  options: [\n    { label: 'Small', value: 'sm' },\n    { label: 'Medium', value: 'md' },\n    { label: 'Large', value: 'lg' },\n  ],\n  value: 'md',\n  onChange: (v) => size.set(v),\n})"
+    },
+    {
+      "name": "with-disabled",
+      "title": "Radio with Disabled Option",
+      "code": "RadioGroup({\n  options: [\n    { label: 'Standard', value: 'std' },\n    { label: 'Premium (unavailable)', value: 'pro', disabled: true },\n    { label: 'Enterprise', value: 'ent' },\n  ],\n  value: 'std',\n  onChange: (v) => plan.set(v),\n})"
+    },
+    {
+      "name": "with-label",
+      "title": "Radio Group with Label",
+      "code": "VStack(4, [\n  Label({ children: 'Select size' }),\n  RadioGroup({\n    options: [\n      { label: 'Small', value: 'sm' },\n      { label: 'Medium', value: 'md' },\n      { label: 'Large', value: 'lg' },\n    ],\n    onChange: (v) => size.set(v),\n  }),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Radio group for single selection from mutually exclusive options",
+    "useWhen": [
+      "Single selection from a list of options",
+      "Mutually exclusive choices",
+      "Size, plan, or tier selectors",
+      "Survey or poll questions"
+    ],
+    "doNotUseWhen": [
+      "Multi-select (use Checkbox)",
+      "Binary on/off toggle (use Switch)",
+      "Boolean form field (use Checkbox)"
+    ],
+    "requiredImports": [
+      "RadioGroup from '@/components/ui/radio'"
+    ],
+    "commonCombinations": [
+      "RadioGroup + Label",
+      "RadioGroup + Card",
+      "RadioGroup + Button"
+    ],
+    "layoutHints": [
+      "Pair with Label for group heading",
+      "Use vertically stacked layout (default)",
+      "Keep option labels concise"
+    ],
+    "accessibilityChecklist": [
+      "Provide accessibilityLabel on the group",
+      "Each option has a visible label",
+      "Container role is 'radiogroup'",
+      "Item role is 'radio'"
+    ]
+  }
+}

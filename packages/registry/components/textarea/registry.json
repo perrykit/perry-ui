@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "1.0",
+  "name": "textarea",
+  "title": "Textarea",
+  "type": "component",
+  "description": "A multi-line text input wrapping Perry's TextArea with consistent styling.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "label"
+  ],
+  "files": [
+    {
+      "path": "files/textarea.ts",
+      "target": "src/components/ui/textarea.ts",
+      "type": "component",
+      "sourcePath": "files/textarea.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Textarea wraps Perry's TextArea with consistent border, radius, and padding styling. Supports an error variant with destructive border color, similar to Input.",
+    "usage": "Textarea({ placeholder: 'Enter description...', rows: 4, onChange: (v) => desc.set(v) })",
+    "accessibility": "Uses role 'input'. Pair with Label for accessible form fields. Provide accessibilityLabel for screen readers.",
+    "platformNotes": {
+      "macos": "Uses native NSTextView through Perry.",
+      "ios": "Uses native UITextView through Perry.",
+      "linux": "Uses native GTK TextView through Perry.",
+      "windows": "Uses current Perry Windows backend behavior.",
+      "web": "Rendered as styled textarea element through Perry web target."
+    }
+  },
+  "props": [
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "description": "Current textarea value"
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "description": "Placeholder text"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable the textarea"
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "required": false,
+      "default": "3",
+      "description": "Number of visible text rows"
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Show error state with destructive border color"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": false,
+      "description": "Change handler"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Screen reader label"
+    }
+  ],
+  "variants": [
+    {
+      "name": "error",
+      "values": ["true", "false"],
+      "defaultValue": "false",
+      "description": "Error state with destructive border"
+    }
+  ],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Textarea",
+      "code": "Textarea({ placeholder: 'Enter description...' })"
+    },
+    {
+      "name": "with-rows",
+      "title": "Textarea with Custom Rows",
+      "code": "Textarea({ placeholder: 'Write your story...', rows: 6 })"
+    },
+    {
+      "name": "with-label",
+      "title": "Textarea with Label",
+      "code": "VStack(4, [\n  Label({ children: 'Bio' }),\n  Textarea({ placeholder: 'Tell us about yourself...', rows: 4 }),\n])"
+    },
+    {
+      "name": "error",
+      "title": "Textarea with Error",
+      "code": "Textarea({ placeholder: 'Required field', error: true })"
+    },
+    {
+      "name": "disabled",
+      "title": "Disabled Textarea",
+      "code": "Textarea({ placeholder: 'Read-only content', disabled: true, rows: 5 })"
+    }
+  ],
+  "agent": {
+    "summary": "Multi-line text input for longer-form content like descriptions, comments, and messages",
+    "useWhen": [
+      "Multi-line text entry",
+      "Comments and feedback",
+      "Description fields in forms",
+      "Any text exceeding a single line"
+    ],
+    "doNotUseWhen": [
+      "Single-line input (use Input)",
+      "Rich text editing (use a rich text editor component)",
+      "Code editing (use a code editor component)"
+    ],
+    "requiredImports": [
+      "Textarea from '@/components/ui/textarea'"
+    ],
+    "commonCombinations": [
+      "Textarea + Label",
+      "Textarea + Button",
+      "Textarea + Card"
+    ],
+    "layoutHints": [
+      "Always pair with Label",
+      "Use rows prop to control visible height",
+      "Stack vertically in forms"
+    ],
+    "accessibilityChecklist": [
+      "Pair with Label for visible label",
+      "Provide placeholder text",
+      "Provide accessibilityLabel when no visible label"
+    ]
+  }
+}

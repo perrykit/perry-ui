@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0",
+  "name": "switch",
+  "title": "Switch",
+  "type": "component",
+  "description": "A toggle switch control for enabling or disabling settings, with optional label.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "label"
+  ],
+  "files": [
+    {
+      "path": "files/switch.ts",
+      "target": "src/components/ui/switch.ts",
+      "type": "component",
+      "sourcePath": "files/switch.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Switch is a toggle control for binary on/off selections, rendered as a rounded track with a sliding indicator. It shows primary color when on and secondary when off.",
+    "usage": "Switch({ label: 'Dark mode', checked: false, onChange: (v) => darkMode.set(v) })",
+    "accessibility": "Uses role 'switch'. Provide a label or accessibilityLabel for screen readers. The checked state is communicated to assistive technology.",
+    "platformNotes": {
+      "macos": "Uses native AppKit toggle behavior through Perry.",
+      "ios": "Uses native UIKit switch behavior through Perry.",
+      "linux": "Uses native GTK switch behavior through Perry.",
+      "windows": "Uses current Perry Windows backend behavior.",
+      "web": "Rendered as styled switch element through Perry web target."
+    }
+  },
+  "props": [
+    {
+      "name": "checked",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Whether the switch is on"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Label text displayed beside the switch"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Disable interaction and dim the switch"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: boolean) => void",
+      "required": false,
+      "description": "Callback when the switch is toggled"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Screen reader label (falls back to label if provided)"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Switch",
+      "code": "Switch({ label: 'Notifications' })"
+    },
+    {
+      "name": "controlled",
+      "title": "Controlled Switch",
+      "code": "Switch({ checked: true, label: 'Auto-save', onChange: (v) => autoSave.set(v) })"
+    },
+    {
+      "name": "disabled",
+      "title": "Disabled Switch",
+      "code": "Switch({ label: 'Locked setting', disabled: true })"
+    },
+    {
+      "name": "settings-panel",
+      "title": "Settings Panel",
+      "code": "VStack(12, [\n  Switch({ label: 'Dark mode', onChange: (v) => dark.set(v) }),\n  Switch({ label: 'Notifications', onChange: (v) => notif.set(v) }),\n  Switch({ label: 'Auto-update', disabled: true }),\n])"
+    }
+  ],
+  "agent": {
+    "summary": "Switch for binary on/off toggles in settings and preference panels",
+    "useWhen": [
+      "Toggling settings or preferences",
+      "Enabling or disabling features",
+      "Binary on/off controls"
+    ],
+    "doNotUseWhen": [
+      "Selecting from mutually exclusive options (use Radio)",
+      "Boolean selection in forms (use Checkbox)",
+      "Multi-select options (use Checkbox)"
+    ],
+    "requiredImports": [
+      "Switch from '@/components/ui/switch'"
+    ],
+    "commonCombinations": [
+      "Switch + Label",
+      "Multiple Switches in VStack",
+      "Switch + Card for settings"
+    ],
+    "layoutHints": [
+      "Stack vertically for multiple switches in settings",
+      "Use labels for clarity"
+    ],
+    "accessibilityChecklist": [
+      "Provide label text",
+      "Ensure on/off state is visually distinct",
+      "Role is set to 'switch'"
+    ]
+  }
+}

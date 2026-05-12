@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0",
+  "name": "sheet",
+  "title": "Sheet",
+  "type": "component",
+  "description": "A sliding panel overlay that slides in from any edge of the viewport, with an optional header, scrollable content area, and action footer.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "files/sheet.ts",
+      "target": "src/components/ui/sheet.ts",
+      "type": "component",
+      "sourcePath": "files/sheet.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Sheet is a sliding panel overlay that enters from a configurable edge of the viewport (left, right, top, or bottom). It uses Perry's sheetCreate/sheetPresent/sheetDismiss APIs for native overlay behavior. Use SheetHeader for the title and optional description with a close button, SheetContent for scrollable body content, and SheetFooter for action buttons. The sheet has a popover background, border, rounded corners on the exposed side, and the 'dialog' accessibility role.",
+    "usage": "Sheet({\n  open: true,\n  side: 'right',\n  title: 'Settings',\n  description: 'Configure your preferences.',\n  onClose: () => { isOpen = false },\n  children: [\n    SheetContent({ children: [Text('Content here.')] }),\n  ],\n})",
+    "accessibility": "Sheets use the 'dialog' accessibility role. The sheet traps focus while open and returns focus to the triggering element on close. Provide a descriptive title for screen readers and always include a close action.",
+    "platformNotes": {
+      "macos": "Renders as a native AppKit side panel or sheet overlay.",
+      "ios": "Renders as a native UIKit sheet with edge-slide behavior.",
+      "linux": "Renders as a GTK overlay panel.",
+      "windows": "Renders using the current Perry Windows backend overlay behavior.",
+      "web": "Renders as a sliding panel with a semi-transparent backdrop overlay."
+    }
+  },
+  "props": [
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Whether the sheet is currently visible"
+    },
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\" | \"top\" | \"bottom\"",
+      "required": false,
+      "default": "right",
+      "description": "The edge of the viewport the sheet slides in from"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false,
+      "default": "400",
+      "description": "Width of the sheet in pixels (used as the panel width for left/right, or as the height for top/bottom)"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "description": "Sheet title text displayed in the header"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Description text below the title in the header"
+    },
+    {
+      "name": "children",
+      "type": "WidgetHandle[]",
+      "required": false,
+      "description": "Sheet body content (typically wrapped in SheetContent)"
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "required": false,
+      "description": "Callback invoked when the sheet is closed"
+    }
+  ],
+  "variants": [
+    {
+      "name": "side",
+      "values": [
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
+      "defaultValue": "right"
+    }
+  ],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Sheet (Right Side)",
+      "code": "Sheet({\n  open: true,\n  side: 'right',\n  title: 'Settings',\n  description: 'Manage your preferences.',\n  onClose: () => { isOpen = false },\n  children: [\n    SheetContent({\n      children: [Text('Settings content goes here.')],\n    }),\n  ],\n})"
+    },
+    {
+      "name": "left-side",
+      "title": "Left Side Sheet",
+      "code": "Sheet({\n  open: true,\n  side: 'left',\n  title: 'Navigation',\n  width: 300,\n  onClose: () => { isOpen = false },\n  children: [\n    SheetContent({\n      children: [Text('Nav items here.')],\n    }),\n  ],\n})"
+    },
+    {
+      "name": "bottom-sheet",
+      "title": "Bottom Sheet",
+      "code": "Sheet({\n  open: true,\n  side: 'bottom',\n  title: 'Share',\n  width: 300,\n  onClose: () => { isOpen = false },\n  children: [\n    SheetContent({\n      children: [\n        Button({ children: 'Copy Link', onPress: () => {} }),\n        Button({ children: 'Share via Email', onPress: () => {} }),\n      ],\n    }),\n  ],\n})"
+    },
+    {
+      "name": "with-footer",
+      "title": "Sheet with Footer Actions",
+      "code": "Sheet({\n  open: true,\n  side: 'right',\n  title: 'Edit Profile',\n  description: 'Update your profile information.',\n  width: 400,\n  onClose: () => { isOpen = false },\n  children: [\n    SheetContent({\n      children: [\n        Input({ placeholder: 'Username', onChange: (v) => {} }),\n        Input({ placeholder: 'Email', onChange: (v) => {} }),\n      ],\n    }),\n    SheetFooter({\n      children: [\n        Button({ children: 'Cancel', variant: 'outline', onPress: () => {} }),\n        Button({ children: 'Save', onPress: () => {} }),\n      ],\n    }),\n  ],\n})"
+    }
+  ],
+  "agent": {
+    "summary": "Sheet is a sliding panel overlay for forms, navigation, details, and secondary content that benefits from an edge-anchored presentation without fully blocking the main view.",
+    "useWhen": [
+      "Displaying forms or detail panels that slide in from the side",
+      "Showing navigation menus on mobile or compact layouts",
+      "Presenting share sheets or action sheets from the bottom",
+      "Editing settings or profile information in context",
+      "Displaying supplementary content alongside the main view"
+    ],
+    "doNotUseWhen": [
+      "Modal confirmations that require full attention (use Dialog instead)",
+      "Simple notifications or toasts (use Alert or Toast instead)",
+      "Inline content that does not need overlay behavior",
+      "Tooltips or ephemeral hover information"
+    ],
+    "requiredImports": [
+      "Sheet, SheetHeader, SheetContent, SheetFooter from '@/components/ui/sheet'"
+    ],
+    "commonCombinations": [
+      "Sheet + Button",
+      "Sheet + Input",
+      "Sheet + Label",
+      "Sheet + Separator",
+      "Sheet + Tabs"
+    ],
+    "layoutHints": [
+      "Use side 'right' (default) for detail panels and forms",
+      "Use side 'left' for navigation drawers",
+      "Use side 'bottom' for action sheets and share menus",
+      "Use side 'top' for notification banners or filters",
+      "Default width is 400px; use 300px for compact panels and 500+ for complex forms",
+      "Wrap body content in SheetContent for scrollable overflow",
+      "Place primary actions in SheetFooter with justify-end alignment"
+    ],
+    "accessibilityChecklist": [
+      "Provide a descriptive title for screen readers",
+      "Always include an onClose callback with a visible close action",
+      "Ensure focus is trapped within the sheet while open",
+      "Announce sheet opening to assistive technology",
+      "Return focus to triggering element on close",
+      "Use the 'dialog' role for proper screen reader behavior"
+    ]
+  }
+}
