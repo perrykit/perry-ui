@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0",
+  "name": "tooltip",
+  "title": "Tooltip",
+  "type": "component",
+  "description": "A hover tooltip for showing contextual information over any widget.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/tooltip.ts",
+      "target": "src/components/ui/tooltip.ts",
+      "type": "component",
+      "sourcePath": "files/tooltip.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Hover tooltip for showing contextual information over any widget.",
+    "usage": "Tooltip({ content: 'Helpful text', children: Button({ children: 'Hover me' }) })",
+    "accessibility": "Tooltip content is announced with role 'label' for screen readers. Native tooltip is set via Perry's widgetSetTooltip as the primary accessibility mechanism.",
+    "platformNotes": {
+      "macos": "Uses native NSView tracking areas",
+      "web": "Uses CSS hover states"
+    }
+  },
+  "props": [
+    {
+      "name": "content",
+      "type": "string",
+      "required": true,
+      "description": "Text displayed inside the tooltip bubble"
+    },
+    {
+      "name": "children",
+      "type": "WidgetHandle",
+      "required": true,
+      "description": "The widget the tooltip is attached to"
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "required": false,
+      "default": "500",
+      "description": "Delay in milliseconds before the tooltip appears on hover"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Tooltip",
+      "code": "Tooltip({ content: 'Helpful text', children: Button({ children: 'Hover me' }) })"
+    }
+  ],
+  "agent": {
+    "summary": "Tooltip shows contextual information on hover over any widget.",
+    "useWhen": [
+      "Explaining icon-only buttons",
+      "Providing hints for form fields",
+      "Showing keyboard shortcuts",
+      "Displaying supplemental information"
+    ],
+    "doNotUseWhen": [
+      "Critical information that must always be visible",
+      "Long-form content that needs a popover instead"
+    ],
+    "requiredImports": [
+      "Tooltip from '@/components/ui/tooltip'"
+    ],
+    "commonCombinations": [
+      "Tooltip + Button",
+      "Tooltip + IconButton",
+      "Tooltip + Input"
+    ],
+    "layoutHints": [
+      "Keep tooltip content concise (one short sentence)",
+      "Use delay to avoid flickering on quick mouse passes"
+    ],
+    "accessibilityChecklist": [
+      "Ensure content is meaningful and concise",
+      "Native tooltip is set for screen reader support",
+      "Do not rely on tooltip alone for critical instructions"
+    ]
+  }
+}
