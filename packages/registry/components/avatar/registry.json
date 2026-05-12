@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0",
+  "name": "avatar",
+  "title": "Avatar",
+  "type": "component",
+  "description": "A circular avatar that displays an image or fallback initials.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/avatar.ts",
+      "target": "src/components/ui/avatar.ts",
+      "type": "component",
+      "sourcePath": "files/avatar.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Avatar displays a circular profile image or fallback initials when no image is available. Use for user profiles, contacts, and identity indicators.",
+    "usage": "Avatar({ src: '/profile.png', fallback: 'JD', size: 'md' })",
+    "accessibility": "Avatar has role 'img'. Provide accessibilityLabel for screen readers, especially when using fallback initials.",
+    "platformNotes": {
+      "macos": "Renders as a circular NSImageView or styled text container.",
+      "web": "Renders as a circular container with object-fit cover."
+    }
+  },
+  "props": [
+    {
+      "name": "src",
+      "type": "string",
+      "required": false,
+      "description": "Image file path for the avatar"
+    },
+    {
+      "name": "fallback",
+      "type": "string",
+      "required": false,
+      "description": "Fallback initials displayed when no image is provided (e.g. 'JD')"
+    },
+    {
+      "name": "size",
+      "type": "AvatarSize",
+      "required": false,
+      "default": "md",
+      "description": "Size variant: sm (32x32), md (40x40), lg (56x56)"
+    },
+    {
+      "name": "accessibilityLabel",
+      "type": "string",
+      "required": false,
+      "description": "Accessible label for screen readers"
+    }
+  ],
+  "variants": [
+    {
+      "name": "size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "defaultValue": "md"
+    }
+  ],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Avatar",
+      "code": "Avatar({ fallback: 'JD' })"
+    },
+    {
+      "name": "with-image",
+      "title": "Avatar with Image",
+      "code": "Avatar({ src: '/profile.png', fallback: 'JD', size: 'lg' })"
+    },
+    {
+      "name": "sizes",
+      "title": "Avatar Sizes",
+      "code": "HStack(8, [\n  Avatar({ fallback: 'SM', size: 'sm' }),\n  Avatar({ fallback: 'MD', size: 'md' }),\n  Avatar({ fallback: 'LG', size: 'lg' }),\n])"
+    },
+    {
+      "name": "accessibility",
+      "title": "Avatar with Accessibility",
+      "code": "Avatar({ src: '/user.png', fallback: 'AB', accessibilityLabel: 'User avatar for Alice Brown' })"
+    }
+  ],
+  "agent": {
+    "summary": "Avatar shows a circular profile image or fallback initials for user identity.",
+    "useWhen": [
+      "User profile pictures",
+      "Contact lists",
+      "Comment author indicators",
+      "Navigation user menus"
+    ],
+    "requiredImports": [
+      "Avatar from '@/components/ui/avatar'"
+    ],
+    "commonCombinations": [
+      "Avatar + Text for user names",
+      "Avatar + Card for profile cards",
+      "Avatar + Button for user menus"
+    ],
+    "layoutHints": [
+      "Use consistent sizes within the same context",
+      "Place avatars next to names in lists for quick identification",
+      "Use lg size for profile pages, md for lists, sm for compact views"
+    ],
+    "accessibilityChecklist": [
+      "Always provide accessibilityLabel describing the person or entity",
+      "Fallback initials should be uppercase and limited to 2 characters"
+    ]
+  }
+}
