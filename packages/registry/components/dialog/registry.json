@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "1.0",
+  "name": "dialog",
+  "title": "Dialog",
+  "type": "component",
+  "description": "A modal dialog with title, description, content area, and action footer, built on Perry sheet APIs.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": [
+      "0.5.x"
+    ]
+  },
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "files/dialog.ts",
+      "target": "src/components/ui/dialog.ts",
+      "type": "component",
+      "sourcePath": "files/dialog.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Dialog displays a modal overlay using Perry's sheet APIs. Use DialogHeader for the title and description, DialogContent for the body, and DialogFooter for action buttons. Dialogs capture focus and block interaction with the rest of the application until dismissed.",
+    "usage": "Dialog({\n  open: true,\n  onOpenChange: (v) => { isOpen = v },\n  title: 'Confirm Action',\n  description: 'Are you sure you want to proceed?',\n  children: [DialogContent({ children: [Text('Additional details here.')] })],\n})",
+    "accessibility": "Dialogs use the 'dialog' accessibility role. Ensure titles are descriptive and focus is trapped within the dialog while open. Provide a clear close or cancel action.",
+    "platformNotes": {
+      "macos": "Renders as a native AppKit sheet with modal behavior.",
+      "ios": "Renders as a native UIKit sheet with modal behavior.",
+      "linux": "Renders as a GTK modal dialog.",
+      "windows": "Renders using the current Perry Windows backend modal behavior.",
+      "web": "Renders as a centered overlay with backdrop."
+    }
+  },
+  "props": [
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "description": "Whether the dialog is currently visible"
+    },
+    {
+      "name": "onOpenChange",
+      "type": "(open: boolean) => void",
+      "required": false,
+      "description": "Callback when dialog open state changes"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "description": "Dialog title text"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Dialog description text below the title"
+    },
+    {
+      "name": "children",
+      "type": "WidgetHandle[]",
+      "required": false,
+      "description": "Dialog body content"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false,
+      "default": "400",
+      "description": "Sheet width in pixels"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false,
+      "default": "300",
+      "description": "Sheet height in pixels"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "default",
+      "title": "Basic Dialog",
+      "code": "Dialog({\n  open: true,\n  title: 'Confirm',\n  description: 'Are you sure you want to continue?',\n  onOpenChange: (open) => { isOpen = open },\n})"
+    },
+    {
+      "name": "with-content",
+      "title": "Dialog with Custom Content",
+      "code": "Dialog({\n  open: true,\n  title: 'Edit Profile',\n  description: 'Update your profile information.',\n  children: [\n    DialogContent({\n      children: [\n        Input({ placeholder: 'Username', onChange: (v) => {} }),\n        Input({ placeholder: 'Email', onChange: (v) => {} }),\n      ],\n    }),\n  ],\n  onOpenChange: (open) => { isOpen = open },\n})"
+    },
+    {
+      "name": "with-footer",
+      "title": "Dialog with Custom Footer",
+      "code": "Dialog({\n  open: true,\n  title: 'Delete Item',\n  description: 'This action cannot be undone.',\n  children: [\n    DialogFooter({\n      children: [\n        Button({ children: 'Cancel', variant: 'outline', onPress: () => {} }),\n        Button({ children: 'Delete', variant: 'destructive', onPress: () => {} }),\n      ],\n    }),\n  ],\n  onOpenChange: (open) => { isOpen = open },\n})"
+    },
+    {
+      "name": "custom-size",
+      "title": "Custom Size Dialog",
+      "code": "Dialog({\n  open: true,\n  title: 'Settings',\n  description: 'Configure your application.',\n  width: 500,\n  height: 400,\n  children: [\n    DialogContent({ children: [Text('Settings content here.')] }),\n  ],\n  onOpenChange: (open) => { isOpen = open },\n})"
+    }
+  ],
+  "agent": {
+    "summary": "Dialog is a modal overlay for confirmations, forms, and focused user interactions that require attention before proceeding.",
+    "useWhen": [
+      "Confirming destructive or irreversible actions",
+      "Collecting user input in a focused context",
+      "Displaying critical information that requires acknowledgment",
+      "Showing forms or settings in a modal context"
+    ],
+    "doNotUseWhen": [
+      "Simple notifications (use Alert instead)",
+      "Inline content that does not need to block interaction",
+      "Navigation between pages or views",
+      "Toasts or ephemeral messages"
+    ],
+    "requiredImports": [
+      "Dialog, DialogHeader, DialogContent, DialogFooter from '@/components/ui/dialog'"
+    ],
+    "commonCombinations": [
+      "Dialog + Button",
+      "Dialog + Input",
+      "Dialog + Card",
+      "Dialog + Alert"
+    ],
+    "layoutHints": [
+      "Use DialogHeader for title and description at the top",
+      "Place primary action button on the right in the footer",
+      "Use destructive variant on confirm buttons for dangerous actions",
+      "Keep dialog content concise; use scroll for long content",
+      "Default width is 400px, adjust for complex forms"
+    ],
+    "accessibilityChecklist": [
+      "Provide a descriptive title for screen readers",
+      "Include a close or cancel action",
+      "Ensure focus is trapped within the dialog while open",
+      "Announce dialog opening to assistive technology",
+      "Return focus to triggering element on close"
+    ]
+  }
+}
