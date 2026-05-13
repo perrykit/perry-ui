@@ -1,0 +1,49 @@
+# Getting Started
+
+## What is Perry UI?
+
+Perry UI is a shadcn-style component registry for Perry native TypeScript apps. It is not a traditional npm package. The CLI copies component source files into your project so you own the code.
+
+## How It Works
+
+1. **Registry** — Components, blocks, and themes are defined in a JSON registry with full metadata.
+2. **CLI** — The `perry-ui` CLI reads the registry and copies source files into your project.
+3. **Core helpers** — Token, theme, variant, and platform adapters are copied alongside components.
+4. **You edit** — Every file is yours. Customize freely.
+
+## Core Concepts
+
+### Tokens
+
+Design tokens define colors, spacing, typography, radius, borders, shadows, and durations. See [Tokens](/docs/tokens).
+
+### Variants
+
+Components use a variant resolver inspired by class-variance-authority, but object and token based. See [Variants](/docs/variants).
+
+### Themes
+
+A theme is a complete set of tokens. The default theme is `zinc`. You can switch or customize. See [Theming](/docs/theming).
+
+### Platform Adapter
+
+Components import from `@/lib/perry-ui/platform` which bridges to Perry's widget styling API. This isolates you from Perry API changes.
+
+## Your First Component
+
+```bash
+bunx perry-ui add button
+```
+
+Then use it in your Perry app:
+
+```ts
+import { Button } from "@/components/ui/button"
+
+Button({
+  children: "Compile Native",
+  variant: "default",
+  size: "md",
+  onPress: () => console.log("clicked"),
+})
+```

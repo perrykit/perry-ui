@@ -1,14 +1,18 @@
 {
-  "name": "perry-ui-registry",
+  "name": "perry-ui",
   "version": "0.1.0",
   "private": true,
   "description": "Perry UI - shadcn-style component registry for Perry native TypeScript apps",
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "build:registry": "bun run scripts/build-registry.ts",
     "validate:registry": "bun run scripts/validate-registry.ts",
+    "dev:cli": "bun run packages/cli/src/index.ts",
     "typecheck": "tsc --noEmit",
     "lint": "echo \"lint placeholder\"",
-    "test": "bun test"
+    "test": "bun test",
+    "dev:web": "bun run --cwd apps/web dev",
+    "build:web": "bun run --cwd apps/web build"
   },
   "devDependencies": {
     "typescript": "^5.5.0",

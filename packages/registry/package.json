@@ -1,7 +1,11 @@
 {
   "name": "@perrykit/registry",
   "version": "0.1.0",
-  "private": true,
   "main": "./registry.json",
-  "types": "./types.ts"
+  "types": "./types.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/perrykit/perry-ui.git",
+    "directory": "packages/registry"
+  }
 }

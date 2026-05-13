@@ -5,8 +5,381 @@
   "registryBaseUrl": "https://perry-ui.dev/r",
   "compatiblePerry": {
     "minVersion": "0.5.0",
-    "testedVersions": ["0.5.x"],
+    "testedVersions": [
+      "0.5.x"
+    ],
     "notes": "Initial release. Tested against Perry 0.5.x."
   },
-  "items": []
+  "items": [
+    {
+      "name": "graphite",
+      "type": "theme",
+      "title": "Graphite",
+      "description": "Warm dark graphite palette.",
+      "categories": [
+        "themes"
+      ],
+      "dependencies": [],
+      "files": [
+        "themes/graphite.json"
+      ],
+      "url": "/r/themes/graphite.json"
+    },
+    {
+      "name": "midnight",
+      "type": "theme",
+      "title": "Midnight",
+      "description": "Deep dark blue-black palette for dark mode.",
+      "categories": [
+        "themes"
+      ],
+      "dependencies": [],
+      "files": [
+        "themes/midnight.json"
+      ],
+      "url": "/r/themes/midnight.json"
+    },
+    {
+      "name": "neutral",
+      "type": "theme",
+      "title": "Neutral",
+      "description": "Pure neutral gray palette with no color tint.",
+      "categories": [
+        "themes"
+      ],
+      "dependencies": [],
+      "files": [
+        "themes/neutral.json"
+      ],
+      "url": "/r/themes/neutral.json"
+    },
+    {
+      "name": "slate",
+      "type": "theme",
+      "title": "Slate",
+      "description": "Cool blue-gray slate palette.",
+      "categories": [
+        "themes"
+      ],
+      "dependencies": [],
+      "files": [
+        "themes/slate.json"
+      ],
+      "url": "/r/themes/slate.json"
+    },
+    {
+      "name": "zinc",
+      "type": "theme",
+      "title": "Zinc",
+      "description": "Neutral zinc palette inspired by shadcn/ui. The default theme.",
+      "categories": [
+        "themes"
+      ],
+      "dependencies": [],
+      "files": [
+        "themes/zinc.json"
+      ],
+      "url": "/r/themes/zinc.json"
+    },
+    {
+      "name": "alert",
+      "type": "component",
+      "title": "Alert",
+      "description": "Displays an alert message with optional title and description.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/alert.ts"
+      ],
+      "url": "/r/components/alert/registry.json"
+    },
+    {
+      "name": "avatar",
+      "type": "component",
+      "title": "Avatar",
+      "description": "A circular avatar that displays an image or fallback initials.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/avatar.ts"
+      ],
+      "url": "/r/components/avatar/registry.json"
+    },
+    {
+      "name": "badge",
+      "type": "component",
+      "title": "Badge",
+      "description": "A small status indicator with variant styling.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/badge.ts"
+      ],
+      "url": "/r/components/badge/registry.json"
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "title": "Button",
+      "description": "A native Perry button with variants, sizes, tokens, and interaction states.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/button.ts"
+      ],
+      "url": "/r/components/button/registry.json"
+    },
+    {
+      "name": "card",
+      "type": "component",
+      "title": "Card",
+      "description": "A container card with header, content, and footer sections.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/card.ts"
+      ],
+      "url": "/r/components/card/registry.json"
+    },
+    {
+      "name": "checkbox",
+      "type": "component",
+      "title": "Checkbox",
+      "description": "A checkbox control for boolean selections with optional label.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/checkbox.ts"
+      ],
+      "url": "/r/components/checkbox/registry.json"
+    },
+    {
+      "name": "dialog",
+      "type": "component",
+      "title": "Dialog",
+      "description": "A modal dialog with title, description, content area, and action footer, built on Perry sheet APIs.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/dialog.ts"
+      ],
+      "url": "/r/components/dialog/registry.json"
+    },
+    {
+      "name": "input",
+      "type": "component",
+      "title": "Input",
+      "description": "A styled text input field wrapping Perry's TextField.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/input.ts"
+      ],
+      "url": "/r/components/input/registry.json"
+    },
+    {
+      "name": "label",
+      "type": "component",
+      "title": "Label",
+      "description": "A styled text label for form fields and sections.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/label.ts"
+      ],
+      "url": "/r/components/label/registry.json"
+    },
+    {
+      "name": "progress",
+      "type": "component",
+      "title": "Progress",
+      "description": "A progress bar that displays completion status for a task or process.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/progress.ts"
+      ],
+      "url": "/r/components/progress/registry.json"
+    },
+    {
+      "name": "radio",
+      "type": "component",
+      "title": "Radio",
+      "description": "A radio group for single selection from a list of mutually exclusive options.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/radio.ts"
+      ],
+      "url": "/r/components/radio/registry.json"
+    },
+    {
+      "name": "select",
+      "type": "component",
+      "title": "Select",
+      "description": "A native dropdown select wrapping Perry's Picker widget.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/select.ts"
+      ],
+      "url": "/r/components/select/registry.json"
+    },
+    {
+      "name": "separator",
+      "type": "component",
+      "title": "Separator",
+      "description": "A horizontal or vertical divider line.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/separator.ts"
+      ],
+      "url": "/r/components/separator/registry.json"
+    },
+    {
+      "name": "sheet",
+      "type": "component",
+      "title": "Sheet",
+      "description": "A sliding panel overlay that slides in from any edge of the viewport, with an optional header, scrollable content area, and action footer.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/sheet.ts"
+      ],
+      "url": "/r/components/sheet/registry.json"
+    },
+    {
+      "name": "skeleton",
+      "type": "component",
+      "title": "Skeleton",
+      "description": "A placeholder loading indicator that mimics the shape of content yet to load.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/skeleton.ts"
+      ],
+      "url": "/r/components/skeleton/registry.json"
+    },
+    {
+      "name": "switch",
+      "type": "component",
+      "title": "Switch",
+      "description": "A toggle switch control for enabling or disabling settings, with optional label.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/switch.ts"
+      ],
+      "url": "/r/components/switch/registry.json"
+    },
+    {
+      "name": "tabs",
+      "type": "component",
+      "title": "Tabs",
+      "description": "Tab navigation for switching between content panels with active state tracking.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/tabs.ts"
+      ],
+      "url": "/r/components/tabs/registry.json"
+    },
+    {
+      "name": "textarea",
+      "type": "component",
+      "title": "Textarea",
+      "description": "A multi-line text input wrapping Perry's TextArea with consistent styling.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/textarea.ts"
+      ],
+      "url": "/r/components/textarea/registry.json"
+    },
+    {
+      "name": "toast",
+      "type": "component",
+      "title": "Toast",
+      "description": "A non-intrusive notification toast with variants and auto-dismiss support.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/toast.ts"
+      ],
+      "url": "/r/components/toast/registry.json"
+    },
+    {
+      "name": "tooltip",
+      "type": "component",
+      "title": "Tooltip",
+      "description": "A hover tooltip for showing contextual information over any widget.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/tooltip.ts"
+      ],
+      "url": "/r/components/tooltip/registry.json"
+    },
+    {
+      "name": "settings-window",
+      "type": "block",
+      "title": "Settings Window",
+      "description": "A complete settings window with sections, toggles, inputs, and actions.",
+      "categories": [
+        "blocks"
+      ],
+      "dependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "separator"
+      ],
+      "files": [
+        "src/components/blocks/settings-window.ts"
+      ],
+      "url": "/r/blocks/settings-window/registry.json"
+    }
+  ]
 }

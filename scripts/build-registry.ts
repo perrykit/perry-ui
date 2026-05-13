@@ -158,4 +158,7 @@ if (existsSync(blocksDir)) {
 rootRegistry.items = items
 writeFileSync(join(DIST_DIR, "registry.json"), JSON.stringify(rootRegistry, null, 2))
 
-console.log(`\nRegistry built: ${items.length} items → dist/`)
+// Also write back to source so dev:web works without a prior build
+writeFileSync(join(REGISTRY_DIR, "registry.json"), JSON.stringify(rootRegistry, null, 2))
+
+console.log(`\nRegistry built: ${items.length} items → dist/ + packages/registry/`)

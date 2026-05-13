@@ -1,0 +1,47 @@
+# Contributing
+
+## How to Contribute
+
+### Add a Component
+
+1. Create `packages/registry/components/your-component/registry.json` with full metadata
+2. Create `packages/registry/components/your-component/files/your-component.ts` with the source
+3. Run `bun run validate:registry` to verify
+4. Run `bun run test` to ensure tests pass
+
+### Component Checklist
+
+- Source file exists and imports from `perry/ui`
+- Registry metadata with all required fields
+- Props definitions with types and descriptions
+- At least one example
+- Agent metadata (summary, useWhen, requiredImports)
+- Accessibility notes
+- Platform notes
+- Registry validates
+
+### Add a Block
+
+Same structure as components but under `packages/registry/blocks/`. Blocks may depend on multiple components via `registryDependencies`.
+
+### Add a Theme
+
+Create a JSON file at `packages/registry/themes/your-theme.json` with all token categories filled.
+
+## Development
+
+```bash
+bun install
+bun run validate:registry
+bun run build:registry
+bun test
+```
+
+## Style Guide
+
+- Use TypeScript strict mode
+- Import from `perry/ui` for widgets
+- Import from `@/lib/perry-ui/*` for helpers
+- Use the variant system for styling
+- Include accessibility labels
+- Document platform differences

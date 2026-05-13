@@ -1,0 +1,50 @@
+# Registry
+
+## How It Works
+
+The registry is a collection of JSON files that describe every installable item: components, blocks, themes, and utilities.
+
+### Remote
+
+```
+https://perry-ui.dev/r/registry.json
+https://perry-ui.dev/r/components/button.json
+https://perry-ui.dev/r/blocks/settings-window.json
+https://perry-ui.dev/r/themes/zinc.json
+```
+
+### Local (in the monorepo)
+
+```
+packages/registry/registry.json
+packages/registry/components/button/registry.json
+packages/registry/blocks/settings-window/registry.json
+packages/registry/themes/zinc.json
+```
+
+## Registry Item Structure
+
+Every item includes:
+
+- **Metadata** — name, type, title, description, license
+- **Compatibility** — minimum and tested Perry versions
+- **Dependencies** — other registry items required
+- **Files** — source file paths and targets
+- **Docs** — overview, usage, accessibility notes, platform notes
+- **Props** — typed prop definitions with defaults
+- **Variants** — variant names, values, and defaults
+- **Examples** — code examples for each component
+- **Agent metadata** — AI agent usage hints
+
+## Dependency Resolution
+
+When you install a component, the CLI recursively resolves its `registryDependencies` and installs them first, in topological order.
+
+## Adding a Component
+
+To add a component to the registry:
+
+1. Create `packages/registry/components/your-component/registry.json`
+2. Create `packages/registry/components/your-component/files/your-component.ts`
+3. Run `bun run validate:registry` to validate
+4. Run `bun run build:registry` to rebuild

@@ -1,0 +1,73 @@
+# Tokens
+
+## Overview
+
+Design tokens are the atomic values that drive the entire Perry UI system. They are TypeScript objects, not CSS variables.
+
+## Color Tokens
+
+19 semantic color tokens:
+
+| Token | Purpose |
+|-------|---------|
+| `background` | App background |
+| `foreground` | Default text |
+| `card` | Card surface |
+| `cardForeground` | Text on cards |
+| `primary` | Primary actions |
+| `primaryForeground` | Text on primary |
+| `secondary` | Secondary surfaces |
+| `secondaryForeground` | Text on secondary |
+| `muted` | Muted surfaces |
+| `mutedForeground` | Muted text |
+| `accent` | Accent surfaces |
+| `accentForeground` | Text on accent |
+| `destructive` | Error/danger |
+| `destructiveForeground` | Text on destructive |
+| `border` | Borders |
+| `input` | Input borders |
+| `ring` | Focus rings |
+| `popover` | Popover surface |
+| `popoverForeground` | Text on popover |
+
+Colors use the `{ r, g, b, a }` format with values 0–1.
+
+## Radius Tokens
+
+| Token | Value |
+|-------|-------|
+| `none` | 0 |
+| `sm` | 4 |
+| `md` | 8 |
+| `lg` | 12 |
+| `xl` | 16 |
+| `full` | 9999 |
+
+## Spacing Tokens
+
+Numeric scale: `0`, `1` (4px), `2` (8px), `3` (12px), `4` (16px), `5` (20px), `6` (24px), `8` (32px), `10` (40px), `12` (48px).
+
+## Typography Tokens
+
+| Token | Value |
+|-------|-------|
+| `xs` | 12 |
+| `sm` | 14 |
+| `base` | 16 |
+| `lg` | 18 |
+| `xl` | 20 |
+| `xxl` | 24 |
+
+## Shadow Tokens
+
+- `none` — no shadow
+- `sm` — `{ x: 0, y: 1, blur: 2, opacity: 0.08 }`
+- `md` — `{ x: 0, y: 4, blur: 12, opacity: 0.10 }`
+
+## Duration Tokens
+
+| Token | Value (ms) |
+|-------|-----------|
+| `fast` | 120 |
+| `normal` | 180 |
+| `slow` | 240 |

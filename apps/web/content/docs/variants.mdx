@@ -1,0 +1,77 @@
+# Variants
+
+## Overview
+
+Perry UI uses a token-based variant system inspired by class-variance-authority (CVA), but instead of CSS class strings, it resolves to style objects.
+
+## How It Works
+
+Each component defines its variants as a configuration object:
+
+```ts
+const buttonVariants = {
+  base: {
+    radius: "md",
+    fontWeight: "medium",
+  },
+  variants: {
+    variant: {
+      default: { background: "primary", foreground: "primaryForeground" },
+      secondary: { background: "secondary", foreground: "secondaryForeground" },
+      destructive: { background: "destructive", foreground: "destructiveForeground" },
+      outline: { background: "transparent", foreground: "foreground", border: "border" },
+      ghost: { background: "transparent", foreground: "foreground" },
+    },
+    size: {
+      sm: { height: 32, paddingX: 12 },
+      md: { height: 40, paddingX: 16 },
+      lg: { height: 48, paddingX: 20 },
+    },
+  },
+  defaults: {
+    variant: "default",
+    size: "md",
+  },
+}
+```
+
+## Resolving Variants
+
+The `createVariants` function from `@/lib/perry-ui/variants` merges base styles, variant styles, and compound variants into a single resolved style object:
+
+```ts
+import { createVariants } from "@/lib/perry-ui/variants"
+import { useTheme } from "@/lib/perry-ui/theme"
+
+const resolveVariant = createVariants(buttonVariants)
+const theme = useTheme()
+const styles = resolveVariant({ variant: "outline", size: "lg" }, theme)
+```
+
+## Compound Variants
+
+For styles that depend on multiple variant combinations:
+
+```ts
+compoundVariants: [
+  {
+    conditions: { variant: "outline", size: "icon" },
+    styles: { borderWidth: 2 },
+  },
+]
+```
+
+## Style Object
+
+The resolved style object may contain:
+
+- `width`, `height` — number or "fill" or "hug"
+- `padding`, `paddingX`, `paddingY`
+- `margin`, `marginX`, `marginY`
+- `radius` — token name or number
+- `background`, `foreground` — color token or Color object
+- `border`, `borderWidth`
+- `fontSize` — token name or number
+- `fontWeight` — "regular", "medium", "semibold", "bold"
+- `opacity`, `gap`
+- `align`, `justify`

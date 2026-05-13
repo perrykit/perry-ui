@@ -1,0 +1,51 @@
+# Accessibility
+
+## Strategy
+
+Perry UI is designed with accessibility in mind and maps to platform-native semantics where Perry exposes them. Every component includes accessibility metadata.
+
+We do not falsely claim full WCAG compliance. Correct wording:
+
+> Designed with accessibility in mind and mapped to platform-native semantics where Perry exposes them.
+
+## Per-Component Checklist
+
+Every component page documents:
+
+- Visible label or accessibility label
+- Disabled state clarity
+- Focus state visibility (where platform supports it)
+- Keyboard behavior
+- Screen reader role
+- Platform differences
+
+## Accessibility Helpers
+
+Core helpers in `src/lib/perry-ui/accessibility.ts`:
+
+```ts
+import { setAccessibilityLabel, setAccessibilityRole } from "@/lib/perry-ui/accessibility"
+
+setAccessibilityLabel(widget, "Save changes")
+setAccessibilityRole(widget, "button")
+```
+
+### Supported Roles
+
+18 accessibility roles: button, link, header, search, image, text, checkbox, radio, switch, slider, progressbar, tab, tablist, tabpanel, menu, menubar, menuitem, alertdialog.
+
+### Live Regions
+
+```ts
+import { setLiveRegion } from "@/lib/perry-ui/accessibility"
+
+setLiveRegion(widget, "polite") // or "assertive"
+```
+
+## Component Metadata
+
+Each component's registry entry includes an `accessibilityChecklist` array in the agent metadata, listing the specific accessibility requirements for that component.
+
+## Platform Notes
+
+Accessibility support varies by platform. Each component's `platformNotes` documents known differences in behavior.

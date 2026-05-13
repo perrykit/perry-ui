@@ -1,0 +1,64 @@
+# CLI Reference
+
+## `perry-ui init`
+
+Initialize Perry UI in your project.
+
+```bash
+bunx perry-ui init
+```
+
+Creates `perry-ui.json` config and copies core helper files.
+
+## `perry-ui add <items...>`
+
+Install one or more components, blocks, or themes.
+
+```bash
+bunx perry-ui add button card input dialog
+bunx perry-ui add block/settings-window
+bunx perry-ui add theme slate
+```
+
+Flags:
+
+| Flag | Description |
+|------|-------------|
+| `--yes` | Accept default prompts |
+| `--overwrite` | Overwrite existing files |
+| `--dry-run` | Show what would be written |
+| `--registry <url>` | Use custom registry URL |
+| `--cwd <path>` | Run in a different directory |
+
+## `perry-ui list`
+
+Show all available registry items.
+
+```bash
+bunx perry-ui list
+perry-ui list --type component
+perry-ui list --installed
+```
+
+## `perry-ui search <query>`
+
+Search registry items by name or description.
+
+## `perry-ui diff <item>`
+
+Compare your local installed file with the latest registry version. Useful because you own the source and may have customized it.
+
+## `perry-ui doctor`
+
+Run diagnostics on your Perry UI setup:
+
+- Perry installed and compatible version
+- Config file exists
+- Registry reachable
+- Required directories exist
+- TypeScript aliases configured
+- Core helpers present
+
+## `perry-ui update`
+
+Check for available updates to installed components.

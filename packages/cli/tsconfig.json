@@ -8,16 +8,12 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@perrykit/core": ["./packages/core/src"],
-      "@perrykit/core/*": ["./packages/core/src/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["packages/*/src/**/*.ts", "packages/cli/src/schemas/**/*.ts", "scripts/**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

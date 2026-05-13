@@ -1,0 +1,49 @@
+# Theming
+
+## Overview
+
+Perry UI uses a token-based theming system. A theme is a complete set of design tokens covering colors, spacing, typography, radius, borders, shadows, and durations.
+
+## Built-in Themes
+
+| Theme | Description |
+|-------|-------------|
+| `zinc` | Default — neutral zinc palette, shadcn-inspired |
+| `slate` | Cool blue-gray |
+| `neutral` | Pure neutral gray |
+| `graphite` | Warm dark graphite |
+| `midnight` | Deep dark blue-black |
+
+## Installing a Theme
+
+```bash
+bunx perry-ui init  # installs zinc by default
+bunx perry-ui add theme slate
+```
+
+This copies the theme token file to `src/lib/perry-ui/theme.ts`.
+
+## Token Categories
+
+Each theme defines:
+
+- **Colors** — 19 semantic color tokens (background, foreground, primary, secondary, muted, accent, destructive, border, input, ring, etc.)
+- **Radius** — none, sm, md, lg, xl, full
+- **Spacing** — numeric scale from 0 to 12
+- **Typography** — font family, sizes from xs to xxl
+- **Border** — thin, medium widths
+- **Shadow** — none, sm, md
+- **Duration** — fast, normal, slow (for transitions)
+
+## Custom Themes
+
+Create your own by copying an existing theme JSON and modifying the token values. The color format uses RGBA objects: `{ r: 0.98, g: 0.98, b: 0.98, a: 1 }`.
+
+## Using Tokens in Components
+
+```ts
+import { useTheme } from "@/lib/perry-ui/theme"
+
+const theme = useTheme()
+const bg = theme.color.primary
+```

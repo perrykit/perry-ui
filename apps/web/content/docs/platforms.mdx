@@ -1,0 +1,51 @@
+# Platforms
+
+## Overview
+
+Perry compiles TypeScript to native GUI apps for multiple platforms. Perry UI components map to platform-native widgets through Perry's API.
+
+| Platform | Backend | Status |
+|----------|---------|--------|
+| macOS | AppKit | Supported |
+| Linux | GTK4 | Supported |
+| Windows | Win32 | In progress |
+| iOS/iPadOS | UIKit | Supported |
+| Android | Views | In progress |
+| Web | DOM | Supported |
+
+## Platform Adapter
+
+Components use the platform adapter at `src/lib/perry-ui/platform.ts` which bridges to Perry's free-function widget styling API:
+
+```ts
+import { applyStyles, applyBg, applyTextColor } from "@/lib/perry-ui/platform"
+
+applyStyles(widget, resolvedStyles)
+```
+
+This adapter isolates components from Perry API changes. If Perry's styling API evolves, only the adapter needs updating.
+
+## Platform Notes
+
+Every component documents its platform-specific behavior. Example for Button:
+
+- **macOS**: Uses native AppKit button behavior through Perry.
+- **iOS**: Uses native UIKit touch behavior through Perry.
+- **Linux**: Uses native GTK button behavior through Perry.
+- **Windows**: Uses current Perry Windows backend behavior.
+- **Web**: Rendered as DOM button through Perry web target.
+
+## Compatibility
+
+Perry UI tracks compatible Perry versions in each component's registry metadata:
+
+```json
+{
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": ["0.5.x"]
+  }
+}
+```
+
+Run `perry-ui doctor` to check compatibility with your installed Perry version.

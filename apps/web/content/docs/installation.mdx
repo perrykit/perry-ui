@@ -1,0 +1,52 @@
+# Installation
+
+## Prerequisites
+
+- [Perry](https://perryts.com) installed (v0.5.0 or later) — [install guide](https://www.perryts.com/en/docs/getting-started)
+- [Bun](https://bun.sh) runtime
+
+## Quick Start
+
+```bash
+bunx perry-ui init
+```
+
+This will:
+
+1. Detect your Perry project structure
+2. Create a `perry-ui.json` config file
+3. Copy core helper files to `src/lib/perry-ui/`
+4. Install the default zinc theme
+
+## Add Components
+
+```bash
+bunx perry-ui add button card input
+```
+
+Components are copied into your project at `src/components/ui/`. You own the code and can customize freely.
+
+## What Gets Installed
+
+```
+src/
+  components/
+    ui/
+      button.ts
+      card.ts
+      input.ts
+  lib/
+    perry-ui/
+      tokens.ts
+      theme.ts
+      variants.ts
+      platform.ts
+      accessibility.ts
+      compat.ts
+```
+
+## Next Steps
+
+- Read the [Getting Started](/docs/getting-started) guide
+- Browse available [Components](/components)
+- Learn about [Theming](/docs/theming)
