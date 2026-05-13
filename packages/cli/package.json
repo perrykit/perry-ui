@@ -3,26 +3,35 @@
   "version": "0.1.0",
   "description": "CLI for Perry UI - shadcn-style component registry for Perry native TypeScript apps",
   "bin": {
-    "perry-ui": "./src/index.ts"
+    "perry-ui": "./dist/cli.js"
   },
-  "main": "./src/index.ts",
+  "main": "./dist/cli.js",
   "scripts": {
     "dev": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outfile dist/cli.js --target bun",
+    "prepublishOnly": "bun run build",
     "typecheck": "tsc --noEmit",
-    "lint": "echo \"lint placeholder\"",
     "test": "bun test"
   },
   "dependencies": {
-    "zod": "^3.23.0",
-    "@perrykit/core": "workspace:*"
+    "zod": "^3.23.0"
   },
   "devDependencies": {
     "typescript": "^5.5.0",
     "@types/bun": "^1.1.0"
   },
   "files": [
-    "src/"
+    "dist/"
   ],
   "keywords": ["perry", "perry-ui", "cli", "components", "registry"],
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicobailey/perrykit",
+    "directory": "perry-ui/packages/cli"
+  },
+  "homepage": "https://ui.perryts.com",
+  "publishConfig": {
+    "access": "public"
+  }
 }
