@@ -38,10 +38,9 @@
       "name": "perry-ui",
       "version": "0.1.0",
       "bin": {
-        "perry-ui": "./src/index.ts",
+        "perry-ui": "./dist/cli.js",
       },
       "dependencies": {
-        "@perrykit/core": "workspace:*",
         "zod": "^3.23.0",
       },
       "devDependencies": {
