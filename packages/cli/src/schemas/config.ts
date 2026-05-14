@@ -4,7 +4,7 @@ export const PerryUIConfigSchema = z.object({
   $schema: z.string().optional(),
   style: z.string().default("default"),
   theme: z.string().default("zinc"),
-  registry: z.string().default("https://perry-ui.dev/r/registry.json"),
+  registry: z.string().default("https://registry.perry-ui.com/r/registry.json"),
   paths: z.object({
     components: z.string().default("src/components"),
     ui: z.string().default("src/components/ui"),
@@ -29,7 +29,7 @@ export type PerryUIConfig = z.infer<typeof PerryUIConfigSchema>
 export const DEFAULT_CONFIG: PerryUIConfig = {
   style: "default",
   theme: "zinc",
-  registry: "https://perry-ui.dev/r/registry.json",
+  registry: "https://registry.perry-ui.com/r/registry.json",
   paths: {
     components: "src/components",
     ui: "src/components/ui",
