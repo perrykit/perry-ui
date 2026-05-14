@@ -20,6 +20,7 @@ mkdirSync(DIST_DIR, { recursive: true })
 mkdirSync(join(DIST_DIR, "components"), { recursive: true })
 mkdirSync(join(DIST_DIR, "blocks"), { recursive: true })
 mkdirSync(join(DIST_DIR, "themes"), { recursive: true })
+mkdirSync(join(DIST_DIR, "r"), { recursive: true })
 
 // ── Read root registry ─────────────────────────────────────────────────
 
@@ -160,5 +161,14 @@ writeFileSync(join(DIST_DIR, "registry.json"), JSON.stringify(rootRegistry, null
 
 // Also write back to source so dev:web works without a prior build
 writeFileSync(join(REGISTRY_DIR, "registry.json"), JSON.stringify(rootRegistry, null, 2))
+
+// ── Mirror dist/ into dist/r/ for URL paths (/r/registry.json, etc.) ───
+import { cpSync } from "fs"
+const rDir = join(DIST_DIR, "r")
+mkdirSync(rDir, { recursive: true })
+cpSync(join(DIST_DIR, "registry.json"), join(rDir, "registry.json"))
+cpSync(join(DIST_DIR, "components"), join(rDir, "components"), { recursive: true })
+cpSync(join(DIST_DIR, "blocks"), join(rDir, "blocks"), { recursive: true })
+cpSync(join(DIST_DIR, "themes"), join(rDir, "themes"), { recursive: true })
 
 console.log(`\nRegistry built: ${items.length} items → dist/ + packages/registry/`)
