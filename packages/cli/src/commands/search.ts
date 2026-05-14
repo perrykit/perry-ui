@@ -13,7 +13,7 @@ export async function search(
   }
 
   const config = findConfig(cwd)
-  const registryUrl = options.registry ?? config?.registry ?? "https://perry-ui.dev/r/registry.json"
+  const registryUrl = options.registry ?? config?.registry ?? "https://registry.perry-ui.com/r/registry.json"
 
   const registry = await fetchRegistry(registryUrl)
   const q = query.toLowerCase()

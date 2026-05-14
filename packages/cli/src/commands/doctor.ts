@@ -33,7 +33,7 @@ export async function doctor(cwd: string, options: { registry?: string } = {}) {
   }
 
   // 3. Registry reachable
-  const registryUrl = options.registry ?? config?.registry ?? "https://perry-ui.dev/r/registry.json"
+  const registryUrl = options.registry ?? config?.registry ?? "https://registry.perry-ui.com/r/registry.json"
   if (registryUrl.startsWith("http")) {
     try {
       const res = await fetch(registryUrl, { method: "HEAD" })

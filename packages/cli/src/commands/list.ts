@@ -9,7 +9,7 @@ export async function list(
   options: { type?: string; installed?: boolean; registry?: string } = {}
 ) {
   const config = findConfig(cwd)
-  const registryUrl = options.registry ?? config?.registry ?? "https://perry-ui.dev/r/registry.json"
+  const registryUrl = options.registry ?? config?.registry ?? "https://registry.perry-ui.com/r/registry.json"
 
   const registry = await fetchRegistry(registryUrl)
 

@@ -9,12 +9,6 @@
 		file_server
 	}
 
-	# Static component/theme/block files
-	handle /r/components/* {
-		header Access-Control-Allow-Origin "*"
-		file_server
-	}
-
 	# Fallback
 	handle {
 		file_server
