@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "name": "dashboard-layout",
+  "title": "Dashboard Layout",
+  "type": "block",
+  "description": "A complete dashboard layout with sidebar navigation, header, and content area.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": ["0.5.x"]
+  },
+  "dependencies": ["button", "separator", "label"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/dashboard-layout.ts",
+      "target": "src/components/blocks/dashboard-layout.ts",
+      "type": "block",
+      "sourcePath": "files/dashboard-layout.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Complete dashboard layout with collapsible sidebar, header with actions, and scrollable content area. Perfect for admin panels and data apps.",
+    "usage": "DashboardLayout({ sidebarItems: [...], headerTitle: 'Dashboard' })",
+    "accessibility": "Navigation items have active states. Header and sidebar are properly separated."
+  },
+  "props": [
+    {
+      "name": "sidebarItems",
+      "type": "DashboardItem[]",
+      "required": false,
+      "description": "Navigation items for sidebar"
+    },
+    {
+      "name": "headerTitle",
+      "type": "string",
+      "required": false,
+      "default": "Dashboard",
+      "description": "Page title displayed in header"
+    },
+    {
+      "name": "headerActions",
+      "type": "Array<{ label: string; onPress: () => void }>",
+      "required": false,
+      "description": "Action buttons in header"
+    },
+    {
+      "name": "children",
+      "type": "any",
+      "required": false,
+      "description": "Main content area"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "basic",
+      "title": "Basic Dashboard",
+      "code": "DashboardLayout()"
+    },
+    {
+      "name": "custom",
+      "title": "Custom Dashboard",
+      "code": "DashboardLayout({ sidebarItems: [...], headerTitle: 'My App' })"
+    }
+  ],
+  "agent": {
+    "summary": "Use DashboardLayout for admin panels and data applications.",
+    "useWhen": [
+      "Building admin dashboards",
+      "Data visualization apps",
+      "Content management systems"
+    ],
+    "doNotUseWhen": [
+      "Simple single-page apps",
+      "Mobile-first layouts"
+    ],
+    "requiredImports": [
+      "DashboardLayout, type { DashboardItem } from '@/components/blocks/dashboard-layout'"
+    ],
+    "commonCombinations": [
+      "DashboardLayout + Card",
+      "DashboardLayout + Data Table",
+      "DashboardLayout + Tabs"
+    ],
+    "layoutHints": [
+      "Sidebar width: 240px fixed",
+      "Header height: 60px fixed",
+      "Content area: scrollable"
+    ],
+    "accessibilityChecklist": [
+      "Navigation items indicate active state",
+      "Header and sidebar properly labeled",
+      "Content area is keyboard navigable"
+    ]
+  }
+}

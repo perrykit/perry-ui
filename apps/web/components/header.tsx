@@ -6,6 +6,7 @@ import { Moon, Sun, Menu, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { SearchBar } from "@/components/search-bar"
 
 const navLinks = [
   { href: "/docs/installation", label: "Docs" },
@@ -20,10 +21,14 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg">
-      <div className="mx-auto flex h-14 max-w-7xl items-center px-6">
-        <Link href="/" className="mr-8 flex items-center gap-2 font-semibold">
+      <div className="mx-auto flex h-14 max-w-7xl items-center px-6 gap-6">
+        <Link href="/" className="flex items-center gap-2 font-semibold">
           <span className="text-lg">Perry UI</span>
         </Link>
+
+        <div className="hidden md:block flex-1 max-w-md">
+          <SearchBar />
+        </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {navLinks.map((link) => (
@@ -59,6 +64,9 @@ export function Header() {
 
       {mobileOpen && (
         <div className="border-t md:hidden px-6 py-4 space-y-3">
+          <div className="mb-4">
+            <SearchBar />
+          </div>
           {navLinks.map((link) => (
             <Link
               key={link.href}

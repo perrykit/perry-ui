@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "name": "data-table",
+  "title": "Data Table",
+  "type": "block",
+  "description": "A sortable table with pagination for displaying tabular data.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": ["0.5.x"]
+  },
+  "dependencies": ["button", "label", "separator"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/data-table.ts",
+      "target": "src/components/blocks/data-table.ts",
+      "type": "block",
+      "sourcePath": "files/data-table.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Sortable and paginated table for displaying data with customizable columns.",
+    "usage": "DataTable({ columns: [...], data: [...] })",
+    "accessibility": "Table has proper headers and pagination controls."
+  },
+  "props": [
+    {
+      "name": "columns",
+      "type": "DataTableColumn[]",
+      "required": true,
+      "description": "Table column definitions"
+    },
+    {
+      "name": "data",
+      "type": "DataTableRow[]",
+      "required": true,
+      "description": "Table data rows"
+    },
+    {
+      "name": "onSort",
+      "type": "(column: string) => void",
+      "required": false,
+      "description": "Sort callback"
+    },
+    {
+      "name": "onPageChange",
+      "type": "(page: number) => void",
+      "required": false,
+      "description": "Page change callback"
+    },
+    {
+      "name": "pageSize",
+      "type": "number",
+      "required": false,
+      "default": 10,
+      "description": "Rows per page"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "basic",
+      "title": "Basic Data Table",
+      "code": "DataTable({ columns: [...], data: [...] })"
+    }
+  ],
+  "agent": {
+    "summary": "Use Data Table for displaying sortable, paginated tabular data.",
+    "useWhen": [
+      "Displaying lists of data",
+      "Admin panels and dashboards",
+      "Data-heavy applications"
+    ],
+    "doNotUseWhen": [
+      "Simple lists (< 10 items)",
+      "Card-based layouts preferred"
+    ],
+    "requiredImports": [
+      "DataTable, type { DataTableColumn, DataTableRow } from '@/components/blocks/data-table'"
+    ],
+    "commonCombinations": [
+      "Data Table + Dashboard Layout",
+      "Data Table + Search",
+      "Data Table + Filter"
+    ],
+    "layoutHints": [
+      "Full-width container",
+      "Fixed header row",
+      "Scrollable body for large datasets"
+    ],
+    "accessibilityChecklist": [
+      "Column headers are labeled",
+      "Sort controls are keyboard accessible",
+      "Pagination buttons have clear labels",
+      "Table has proper caption or title"
+    ]
+  }
+}

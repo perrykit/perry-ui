@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 const docsPages = [
+  { href: "/docs/tutorial", title: "Tutorial", description: "Build your first Perry UI app in 10 minutes." },
   { href: "/docs/installation", title: "Installation", description: "Set up Perry UI in your project." },
   { href: "/docs/getting-started", title: "Getting Started", description: "Your first Perry UI app." },
   { href: "/docs/cli", title: "CLI Reference", description: "All CLI commands and options." },

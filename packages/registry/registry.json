@@ -362,6 +362,76 @@
       "url": "/r/components/tooltip/registry.json"
     },
     {
+      "name": "auth-screen",
+      "type": "block",
+      "title": "Auth Screen",
+      "description": "A complete authentication screen with email/password form and actions.",
+      "categories": [
+        "blocks"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/blocks/auth-screen.ts"
+      ],
+      "url": "/r/blocks/auth-screen/registry.json"
+    },
+    {
+      "name": "dashboard-layout",
+      "type": "block",
+      "title": "Dashboard Layout",
+      "description": "A complete dashboard layout with sidebar navigation, header, and content area.",
+      "categories": [
+        "blocks"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/blocks/dashboard-layout.ts"
+      ],
+      "url": "/r/blocks/dashboard-layout/registry.json"
+    },
+    {
+      "name": "data-table",
+      "type": "block",
+      "title": "Data Table",
+      "description": "A sortable table with pagination for displaying tabular data.",
+      "categories": [
+        "blocks"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/blocks/data-table.ts"
+      ],
+      "url": "/r/blocks/data-table/registry.json"
+    },
+    {
+      "name": "form-wizard",
+      "type": "block",
+      "title": "Form Wizard",
+      "description": "A multi-step form wizard with progress indicator and navigation.",
+      "categories": [
+        "blocks"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/blocks/form-wizard.ts"
+      ],
+      "url": "/r/blocks/form-wizard/registry.json"
+    },
+    {
+      "name": "notification-list",
+      "type": "block",
+      "title": "Notification List",
+      "description": "A list of notifications with actions for alerts, toasts, and updates.",
+      "categories": [
+        "blocks"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/blocks/notification-list.ts"
+      ],
+      "url": "/r/blocks/notification-list/registry.json"
+    },
+    {
       "name": "settings-window",
       "type": "block",
       "title": "Settings Window",

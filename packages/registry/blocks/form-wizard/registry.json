@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0",
+  "name": "form-wizard",
+  "title": "Form Wizard",
+  "type": "block",
+  "description": "A multi-step form wizard with progress indicator and navigation.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": ["0.5.x"]
+  },
+  "dependencies": ["button", "label", "card", "progress", "separator"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/form-wizard.ts",
+      "target": "src/components/blocks/form-wizard.ts",
+      "type": "block",
+      "sourcePath": "files/form-wizard.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Multi-step form with progress bar, back/next navigation, and completion callback.",
+    "usage": "FormWizard({ steps: [{ title: 'Step 1', fields: [...] }] })",
+    "accessibility": "Progress indicator shows current step. Navigation buttons are clearly labeled."
+  },
+  "props": [
+    {
+      "name": "steps",
+      "type": "FormStep[]",
+      "required": true,
+      "description": "Form step definitions"
+    },
+    {
+      "name": "onComplete",
+      "type": "(data: Record<string, any>) => void",
+      "required": false,
+      "description": "Completion callback with all form data"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "basic",
+      "title": "Basic Wizard",
+      "code": "FormWizard({ steps: [...] })"
+    }
+  ],
+  "agent": {
+    "summary": "Use Form Wizard for multi-step forms and data collection.",
+    "useWhen": [
+      "Onboarding flows",
+      "Multi-page forms",
+      "Data collection wizards"
+    ],
+    "doNotUseWhen": [
+      "Simple single-step forms",
+      "Forms with < 3 fields"
+    ],
+    "requiredImports": [
+      "FormWizard, type { FormStep, FormField } from '@/components/blocks/form-wizard'"
+    ],
+    "commonCombinations": [
+      "Form Wizard + Card",
+      "Form Wizard + Input",
+      "Form Wizard + Progress"
+    ],
+    "layoutHints": [
+      "Progress bar at top",
+      "Back/Next buttons at bottom",
+      "Step titles clearly visible"
+    ],
+    "accessibilityChecklist": [
+      "Progress indicator is descriptive",
+      "Current step is announced",
+      "Navigation buttons have clear labels",
+      "Form fields have proper labels"
+    ]
+  }
+}

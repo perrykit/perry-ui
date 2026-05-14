@@ -1,0 +1,255 @@
+# Tutorial: Build Your First App
+
+Follow this 10-minute tutorial to build a complete notes app using Perry UI.
+
+## What You'll Build
+
+A functional notes application with:
+- ✅ Create, edit, and delete notes
+- ✅ Search and filter notes
+- ✅ Beautiful native UI
+- ✅ Cross-platform support (macOS, iOS, Android, Web)
+
+## Prerequisites
+
+- **Bun** installed (`curl -fsSL https://bun.sh/install | bash`)
+- **Perry CLI** installed (`bun install -g perry`)
+- Basic TypeScript knowledge
+
+## Step 1: Initialize Perry Project (2 min)
+
+```bash
+# Create new project
+perry create my-notes-app
+cd my-notes-app
+
+# Initialize Perry UI
+bunx perry-ui init
+```
+
+This creates:
+```
+my-notes-app/
+├── perry.config.ts
+├── src/
+│   └── main.ts
+└── perryui.config.json
+```
+
+## Step 2: Add Components (1 min)
+
+```bash
+bunx perry-ui add button card input label dialog separator toast
+```
+
+This adds 7 components to your project:
+```
+src/components/ui/
+├── button.ts
+├── card.ts
+├── dialog.ts
+├── input.ts
+├── label.ts
+├── separator.ts
+└── toast.ts
+```
+
+## Step 3: Build the Notes List (3 min)
+
+Create `src/components/notes-list.ts`:
+
+```typescript
+import { VStack } from "perry/ui"
+import { Card } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Separator } from "@/components/ui/separator"
+
+interface Note {
+  id: number
+  title: string
+  content: string
+}
+
+let notes: Note[] = []
+let nextId = 1
+
+function createNote() {
+  const note: Note = {
+    id: nextId++,
+    title: "New Note",
+    content: ""
+  }
+  notes.push(note)
+  renderNotes()
+}
+
+function deleteNote(id: number) {
+  notes = notes.filter(n => n.id !== id)
+  renderNotes()
+}
+
+function renderNotes() {
+  const container = document.getElementById("notes-container")
+  if (!container) return
+
+  container.innerHTML = ""
+
+  notes.forEach(note => {
+    const noteCard = Card({
+      children: [
+        {
+          type: "header",
+          content: note.title
+        },
+        {
+          type: "content",
+          content: Label({
+            children: note.content || "No content",
+            variant: "muted"
+          })
+        },
+        {
+          type: "footer",
+          content: Button({
+            children: "Delete",
+            variant: "destructive",
+            size: "sm",
+            onPress: () => deleteNote(note.id)
+          })
+        }
+      ]
+    })
+    container.appendChild(noteCard)
+  })
+}
+
+export function NotesList() {
+  return VStack(16, [
+    // Header
+    Card({
+      children: [{
+        type: "header",
+        content: Label({
+          children: "My Notes",
+          variant: "heading"
+        })
+      }]
+    }),
+
+    // Search bar
+    Input({
+      placeholder: "Search notes...",
+      onChange: (value) => console.log("Search:", value)
+    }),
+
+    // New note button
+    Button({
+      children: "New Note",
+      variant: "default",
+      onPress: createNote
+    }),
+
+    Separator(),
+
+    // Notes container
+    VStack(8, [
+      Label({
+        children: "Notes will appear here",
+        variant: "muted"
+      })
+    ], { id: "notes-container" })
+  ])
+}
+```
+
+## Step 4: Create Main App (2 min)
+
+Update `src/main.ts`:
+
+```typescript
+import { Window } from "perry/ui"
+import { NotesList } from "./components/notes-list"
+
+export function main() {
+  return Window({
+    title: "My Notes App",
+    width: 600,
+    height: 800,
+    children: [NotesList()]
+  })
+}
+```
+
+## Step 5: Run Your App (1 min)
+
+```bash
+# Development mode
+bun run dev
+
+# Or build for production
+bun run build
+perry build
+```
+
+Your app is now running on macOS! Try:
+- Click "New Note" to create notes
+- Use the search bar to filter
+- Click "Delete" to remove notes
+
+## Step 6: Add Edit Dialog (Bonus - 5 min)
+
+Create `src/components/note-dialog.ts`:
+
+```typescript
+import { Dialog } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export function NoteDialog(note: Note, onSave: (note: Note) => void) {
+  let title = note.title
+  let content = note.content
+
+  Dialog({
+    title: "Edit Note",
+    onConfirm: () => {
+      onSave({ ...note, title, content })
+    }
+  })
+}
+```
+
+Update the notes list to use the dialog when clicking a note.
+
+## What's Next?
+
+### Customize Your App
+
+1. **Add themes**: Change the color scheme
+2. **Add persistence**: Save notes to localStorage
+3. **Add categories**: Organize notes with tags
+4. **Add search**: Implement real filtering
+
+### Learn More
+
+- [Components](/components) — Explore all 20 components
+- [Blocks](/blocks) — Use pre-built UI patterns
+- [Theming](/docs/theming) — Customize colors and styles
+- [Platforms](/docs/platforms) — Deploy to iOS, Android, Web
+
+## Get Help
+
+- **GitHub Issues**: [perrykit/perry-ui](https://github.com/perrykit/perry-ui/issues)
+- **Discord**: Join the Perry community
+- **Docs**: [Full documentation](/docs)
+
+## Summary
+
+In 10 minutes, you:
+✅ Built a complete notes app
+✅ Used 7 Perry UI components
+✅ Learned component patterns
+✅ Created cross-platform native UI
+
+**Ready to build more?** Explore our [blocks](/blocks) for ready-to-use UI patterns!

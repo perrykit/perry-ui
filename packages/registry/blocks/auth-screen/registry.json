@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0",
+  "name": "auth-screen",
+  "title": "Auth Screen",
+  "type": "block",
+  "description": "A complete authentication screen with email/password form and actions.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": ["0.5.x"]
+  },
+  "dependencies": ["button", "card", "input", "label", "separator"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/auth-screen.ts",
+      "target": "src/components/blocks/auth-screen.ts",
+      "type": "block",
+      "sourcePath": "files/auth-screen.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "Complete authentication screen with email/password inputs, sign in button, and additional actions for forgot password and sign up.",
+    "usage": "AuthScreen({ onSubmit: (email, password) => { ... } })",
+    "accessibility": "Inputs have proper labels and placeholder text. Buttons have clear action labels."
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "default": "Welcome Back",
+      "description": "Screen title"
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "required": false,
+      "default": "Sign in to your account",
+      "description": "Screen subtitle"
+    },
+    {
+      "name": "onSubmit",
+      "type": "(email: string, password: string) => void",
+      "required": false,
+      "description": "Login submit handler"
+    },
+    {
+      "name": "onForgotPassword",
+      "type": "() => void",
+      "required": false,
+      "description": "Forgot password handler"
+    },
+    {
+      "name": "onSignUp",
+      "type": "() => void",
+      "required": false,
+      "description": "Sign up handler"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "basic",
+      "title": "Basic Auth Screen",
+      "code": "AuthScreen()"
+    },
+    {
+      "name": "custom",
+      "title": "Custom Auth Screen",
+      "code": "AuthScreen({ title: 'Login', onSubmit: handleLogin })"
+    }
+  ],
+  "agent": {
+    "summary": "Use AuthScreen for user authentication flows.",
+    "useWhen": [
+      "App requires user login",
+      "Need email/password authentication",
+      "Onboarding or registration flows"
+    ],
+    "doNotUseWhen": [
+      "Using OAuth/social auth",
+      "Custom auth flow needed"
+    ],
+    "requiredImports": [
+      "AuthScreen from '@/components/blocks/auth-screen'"
+    ],
+    "commonCombinations": [
+      "AuthScreen + Dialog",
+      "AuthScreen + Toast"
+    ],
+    "layoutHints": [
+      "Center on screen for desktop",
+      "Full width on mobile",
+      "Add logo above title"
+    ],
+    "accessibilityChecklist": [
+      "Email input has type='email'",
+      "Password input has type='password'",
+      "All inputs have associated labels",
+      "Buttons have clear action labels"
+    ]
+  }
+}

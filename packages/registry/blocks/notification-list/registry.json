@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0",
+  "name": "notification-list",
+  "title": "Notification List",
+  "type": "block",
+  "description": "A list of notifications with actions for alerts, toasts, and updates.",
+  "license": "MIT",
+  "compatiblePerry": {
+    "minVersion": "0.5.0",
+    "testedVersions": ["0.5.x"]
+  },
+  "dependencies": ["button", "label", "card", "badge", "separator"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "files/notification-list.ts",
+      "target": "src/components/blocks/notification-list.ts",
+      "type": "block",
+      "sourcePath": "files/notification-list.ts",
+      "overwrite": "prompt"
+    }
+  ],
+  "docs": {
+    "overview": "List of notifications with type variants, timestamps, and action buttons.",
+    "usage": "NotificationList({ notifications: [...] })",
+    "accessibility": "Notifications have type indicators and clear action labels."
+  },
+  "props": [
+    {
+      "name": "notifications",
+      "type": "Notification[]",
+      "required": true,
+      "description": "Array of notification objects"
+    },
+    {
+      "name": "onDismiss",
+      "type": "(id: string) => void",
+      "required": false,
+      "description": "Dismiss callback"
+    },
+    {
+      "name": "onAction",
+      "type": "(id: string, action: string) => void",
+      "required": false,
+      "description": "Action button callback"
+    }
+  ],
+  "variants": [],
+  "examples": [
+    {
+      "name": "basic",
+      "title": "Basic Notifications",
+      "code": "NotificationList({ notifications: [...] })"
+    }
+  ],
+  "agent": {
+    "summary": "Use Notification List for displaying alerts and updates.",
+    "useWhen": [
+      "Activity feeds",
+      "Notification centers",
+      "Alert dashboards"
+    ],
+    "doNotUseWhen": [
+      "Simple toasts",
+      "Single notifications"
+    ],
+    "requiredImports": [
+      "NotificationList, type { Notification } from '@/components/blocks/notification-list'"
+    ],
+    "commonCombinations": [
+      "Notification List + Card",
+      "Notification List + Badge",
+      "Notification List + Button"
+    ],
+    "layoutHints": [
+      "Most recent at top",
+      "Group by type or date",
+      "Limit to 10-20 visible"
+    ],
+    "accessibilityChecklist": [
+      "Notification type is visually distinct",
+      "Timestamps are machine-readable",
+      "Actions have clear labels",
+      "Dismiss button is keyboard accessible"
+    ]
+  }
+}

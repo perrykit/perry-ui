@@ -1,0 +1,39 @@
+name: Publish CLI
+
+on:
+  push:
+    tags:
+      - 'cli-v*'
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: |
+          cd packages/cli
+          bun install
+
+      - name: Build CLI
+        run: |
+          cd packages/cli
+          bun run build
+
+      - name: Publish to npm
+        run: |
+          cd packages/cli
+          npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

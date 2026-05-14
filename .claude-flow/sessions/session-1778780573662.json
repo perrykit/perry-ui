@@ -1,0 +1,14 @@
+{
+  "id": "session-1778780573662",
+  "startedAt": "2026-05-14T17:42:53.662Z",
+  "cwd": "/Volumes/ExternalDrive2TB/projects/perrykit/perry-ui",
+  "context": {},
+  "metrics": {
+    "edits": 8,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "endedAt": "2026-05-14T22:08:37.120Z",
+  "duration": 15943458
+}
