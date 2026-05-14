@@ -6,7 +6,7 @@ COPY package.json bun.lock ./
 COPY packages/core/package.json packages/core/
 COPY packages/registry/package.json packages/registry/
 
-RUN bun install --frozen-lockfile
+RUN bun install
 
 COPY packages/core/ packages/core/
 COPY packages/registry/ packages/registry/
