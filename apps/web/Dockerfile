@@ -11,6 +11,7 @@ COPY apps/web/package.json apps/web/
 RUN bun install --frozen-lockfile
 
 # Copy source
+COPY scripts/ scripts/
 COPY packages/core/ packages/core/
 COPY packages/registry/ packages/registry/
 COPY packages/cli/ packages/cli/
