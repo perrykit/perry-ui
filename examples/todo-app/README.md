@@ -13,16 +13,47 @@ A functional todo application demonstrating Perry UI components.
 - State management with TypeScript interfaces
 - Dynamic list rendering
 
-## How to Run
+## Code Overview
 
-```bash
-# From the examples/todo-app directory
-bun run dev
-# Or with Perry CLI
-perry run
+This example shows:
+```typescript
+// Input for text entry
+Input({
+  placeholder: "Add a new todo...",
+  onChange: (value) => { inputText = value }
+})
+
+// Checkbox for completion
+Checkbox({
+  checked: todo.completed,
+  onCheckedChange: (checked) => toggleTodo(todo.id)
+})
+
+// Dialog for confirmation
+Dialog({
+  title: "Delete Todo",
+  description: "Are you sure?",
+  onConfirm: deleteTodo
+})
+
+// Dynamic list rendering
+todos.forEach(todo => {
+  const todoItem = createTodoItem(todo)
+  container.appendChild(todoItem)
+})
 ```
 
-## Components Used
+## How to Use This Example
+
+This is a **code example** demonstrating component usage patterns:
+
+1. **Read the source code** in `src/main.ts`
+2. **See component imports** and usage patterns
+3. **Copy patterns** to your own Perry project
+
+**Note:** This is not a runnable app — it's example code showing how to use Perry UI components.
+
+## Components Demonstrated
 
 - `Input` — Text input field
 - `Button` — Action buttons (default, destructive variants)
@@ -32,13 +63,13 @@ perry run
 - `Label` — Text labels
 - `VStack` / `HStack` — Layout containers
 
-## Features
+## Features Demonstrated
 
 - Add new todos
 - Mark todos as complete/incomplete
 - Delete todos with confirmation
 - Visual feedback for completed items
-- Toast notifications
+- Toast notifications pattern
 
 ## Customize
 
@@ -48,3 +79,9 @@ Try adding:
 - Categories/tags
 - Search/filter functionality
 - Edit existing todos
+
+## Learn More
+
+- [Components Documentation](https://perry-ui.com/components)
+- [Getting Started Guide](https://perry-ui.com/docs/getting-started)
+- [Tutorial](https://perry-ui.com/docs/tutorial)
