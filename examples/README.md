@@ -9,10 +9,10 @@ Example apps are generated using the Perry UI CLI.
 mkdir -p examples/basic-app && cd examples/basic-app
 
 # Initialize
-bun run ../../packages/cli/src/index.ts init --yes
+bunx perry-ui init --yes
 
 # Add components
-bun run ../../packages/cli/src/index.ts add button card input label
+bunx perry-ui add button card input label
 ```
 
 Do not hand-maintain these apps — they exist to validate the CLI works correctly.
