@@ -17,7 +17,7 @@ const docsPages = [
 export default function DocsPage() {
   return (
     <div>
-      <h1>Documentation</h1>
+      <h1>Welcome to Perry UI Documentation</h1>
       <p className="text-lg text-muted-foreground mt-2 mb-8">
         Everything you need to build beautiful native apps with Perry UI.
       </p>
