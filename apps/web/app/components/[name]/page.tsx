@@ -5,6 +5,7 @@ import { InstallCommand } from "@/components/install-command"
 import { PropsTable } from "@/components/props-table"
 import { PlatformNotes } from "@/components/platform-notes"
 import { CodeBlock } from "@/components/code-block"
+import { ComponentPreview } from "@/components/component-preview"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -40,6 +41,19 @@ export default async function ComponentPage({ params }: { params: Promise<{ name
         <div className="mt-6">
           <InstallCommand items={name} />
         </div>
+
+        {/* Preview */}
+        <section className="mt-10">
+          <h2 className="text-xl font-semibold mb-4">Preview</h2>
+          <ComponentPreview name={name} title={component.title} />
+          <div className="mt-4">
+            <Button asChild variant="outline" size="sm">
+              <Link href={`/playground/${name}`}>
+                Try it Live →
+              </Link>
+            </Button>
+          </div>
+        </section>
 
         {/* Usage */}
         <section className="mt-10">
