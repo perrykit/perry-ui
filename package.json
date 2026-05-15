@@ -15,7 +15,8 @@
     "build:web": "bun run --cwd apps/web build"
   },
   "devDependencies": {
-    "typescript": "^5.5.0",
-    "@types/bun": "^1.1.0"
+    "@types/bun": "^1.1.0",
+    "puppeteer": "^24.43.1",
+    "typescript": "^5.5.0"
   }
 }
