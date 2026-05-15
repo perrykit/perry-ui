@@ -1,0 +1,18 @@
+{
+  "model": "Xenova/all-mpnet-base-v2",
+  "modelPath": "/Volumes/ExternalDrive2TB/projects/perrykit/perry-ui/.claude-flow/models",
+  "dimension": 768,
+  "cacheSize": 256,
+  "hyperbolic": {
+    "enabled": true,
+    "curvature": -1,
+    "epsilon": 1e-15,
+    "maxNorm": 0.99999
+  },
+  "neural": {
+    "enabled": true,
+    "driftThreshold": 0.3,
+    "decayRate": 0.01
+  },
+  "initialized": "2026-05-15T17:19:11.033Z"
+}
