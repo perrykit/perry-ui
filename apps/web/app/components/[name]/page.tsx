@@ -7,7 +7,6 @@ import { PlatformNotes } from "@/components/platform-notes"
 import { CodeBlock } from "@/components/code-block"
 import { ComponentPreview } from "@/components/component-preview"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 
 export function generateStaticParams() {
   return getComponentNames().map((name) => ({ name }))
@@ -46,13 +45,9 @@ export default async function ComponentPage({ params }: { params: Promise<{ name
         <section className="mt-10">
           <h2 className="text-xl font-semibold mb-4">Preview</h2>
           <ComponentPreview name={name} title={component.title} />
-          <div className="mt-4">
-            <Button asChild variant="outline" size="sm">
-              <Link href={`/playground/${name}`}>
-                Try it Live →
-              </Link>
-            </Button>
-          </div>
+          <p className="text-sm text-muted-foreground mt-4">
+            Perry UI components are designed for native apps. See the examples section for runnable apps demonstrating these components.
+          </p>
         </section>
 
         {/* Usage */}
