@@ -239,8 +239,7 @@ apps/web/app/docs/page.tsx                 # Added tutorial link
 
 ### Short Term (This Week)
 3. **Test CI/CD** — Push a commit to verify workflows run
-4. **Add component preview images** (20 screenshots)
-5. **Populate remaining component examples** (80 files total)
+4. **Populate remaining component examples** (80 files total)
 
 ### Medium Term (This Month)
 6. **Create interactive component playground**
