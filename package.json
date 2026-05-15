@@ -18,5 +18,8 @@
     "@types/bun": "^1.1.0",
     "puppeteer": "^24.43.1",
     "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "zustand": "^5.0.13"
   }
 }
