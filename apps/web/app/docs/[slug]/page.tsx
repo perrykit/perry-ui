@@ -2,7 +2,6 @@ import { readFileSync, readdirSync } from "fs"
 import { join } from "path"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
-import { DocsSidebar } from "@/components/docs-sidebar"
 
 const CONTENT_DIR = join(process.cwd(), "content/docs")
 
@@ -35,11 +34,8 @@ async function DocPageInner({ params }: { params: Promise<{ slug: string }> }) {
   if (!source) notFound()
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-10 flex gap-10">
-      <DocsSidebar currentPath={`/docs/${slug}`} />
-      <div className="min-w-0 flex-1 prose prose-zinc dark:prose-invert max-w-none">
-        <MDXRemote source={source} />
-      </div>
+    <div className="prose prose-zinc dark:prose-invert max-w-none">
+      <MDXRemote source={source} />
     </div>
   )
 }
