@@ -5,7 +5,6 @@ import { InstallCommand } from "@/components/install-command"
 import { PropsTable } from "@/components/props-table"
 import { PlatformNotes } from "@/components/platform-notes"
 import { CodeBlock } from "@/components/code-block"
-import { ComponentPreview } from "@/components/component-preview"
 import Link from "next/link"
 
 export function generateStaticParams() {
@@ -41,14 +40,7 @@ export default async function ComponentPage({ params }: { params: Promise<{ name
           <InstallCommand items={name} />
         </div>
 
-        {/* Preview */}
-        <section className="mt-10">
-          <h2 className="text-xl font-semibold mb-4">Preview</h2>
-          <ComponentPreview name={name} title={component.title} />
-          <p className="text-sm text-muted-foreground mt-4">
-            Perry UI components are designed for native apps. See the examples section for runnable apps demonstrating these components.
-          </p>
-        </section>
+        {/* Usage */}
 
         {/* Usage */}
         <section className="mt-10">
