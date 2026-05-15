@@ -1,10 +1,9 @@
-"use client"
-
-import { usePathname } from "next/navigation"
 import { DocsSidebar } from "@/components/docs-sidebar"
 import { MobileDocsNav } from "@/components/mobile-docs-nav"
+import { Breadcrumb } from "@/components/breadcrumb"
+import { usePathname } from "next/navigation"
 
-export default function DocsLayout({ children }: { children: React.ReactNode }) {
+export function DocsLayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
   return (

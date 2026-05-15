@@ -9,9 +9,9 @@
 
 import { Window } from "perry/ui"
 import { VStack } from "perry/ui"
-import { Button } from "./components/ui/button"
-import { Card } from "./components/ui/card"
-import { Label } from "./components/ui/label"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
 
 let count = 0
 

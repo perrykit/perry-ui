@@ -9,9 +9,7 @@ import { cn } from "@/lib/utils"
 import { SearchBar } from "@/components/search-bar"
 
 const navLinks = [
-  { href: "/docs/installation", label: "Docs" },
-  { href: "/components", label: "Components" },
-  { href: "/blocks", label: "Blocks" },
+  { href: "/docs/installation", label: "Guides" },
 ]
 
 export function Header() {

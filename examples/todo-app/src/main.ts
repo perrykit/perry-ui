@@ -12,12 +12,12 @@
 
 import { Window } from "perry/ui"
 import { VStack, HStack } from "perry/ui"
-import { Button } from "./components/ui/button"
-import { Card } from "./components/ui/card"
-import { Input } from "./components/ui/input"
-import { Checkbox } from "./components/ui/checkbox"
-import { Dialog } from "./components/ui/dialog"
-import { Label } from "./components/ui/label"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Dialog } from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label"
 
 interface Todo {
   id: number

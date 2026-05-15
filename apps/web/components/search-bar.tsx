@@ -1,29 +1,38 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useEffect } from "react"
 import { Search } from "lucide-react"
-import { getRootRegistry } from "@/lib/registry"
+import { searchRegistryAction } from "@/lib/registry-actions"
 import { useRouter } from "next/navigation"
 
 export function SearchBar() {
   const [query, setQuery] = useState("")
   const [isOpen, setIsOpen] = useState(false)
+  const [results, setResults] = useState<Awaited<ReturnType<typeof searchRegistryAction>>>([])
+  const [isSearching, setIsSearching] = useState(false)
   const router = useRouter()
-  const registry = getRootRegistry()
 
-  const results = useMemo(() => {
-    if (!query.trim()) return []
+  useEffect(() => {
+    if (!query.trim()) {
+      setResults([])
+      return
+    }
 
-    const q = query.toLowerCase()
-    return registry.items.filter((item) => {
-      const matchName = item.name.toLowerCase().includes(q)
-      const matchTitle = item.title?.toLowerCase().includes(q)
-      const matchDesc = item.description?.toLowerCase().includes(q)
-      const matchType = item.type?.toLowerCase().includes(q)
+    const searchTimer = setTimeout(async () => {
+      setIsSearching(true)
+      try {
+        const searchResults = await searchRegistryAction(query)
+        setResults(searchResults)
+      } catch (error) {
+        console.error("Search error:", error)
+        setResults([])
+      } finally {
+        setIsSearching(false)
+      }
+    }, 300) // Debounce search
 
-      return matchName || matchTitle || matchDesc || matchType
-    }).slice(0, 8) // Limit to 8 results
-  }, [query, registry.items])
+    return () => clearTimeout(searchTimer)
+  }, [query])
 
   const handleSelect = (item: typeof results[0]) => {
     if (item.type === "component") {
@@ -61,7 +70,11 @@ export function SearchBar() {
             onClick={() => setIsOpen(false)}
           />
           <div className="absolute z-20 w-full mt-2 bg-popover border rounded-md shadow-lg max-h-96 overflow-y-auto">
-            {results.length === 0 ? (
+            {isSearching ? (
+              <div className="p-4 text-sm text-muted-foreground text-center">
+                Searching...
+              </div>
+            ) : results.length === 0 ? (
               <div className="p-4 text-sm text-muted-foreground text-center">
                 No results found for "{query}"
               </div>

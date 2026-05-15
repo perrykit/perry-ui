@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation"
 import { getComponentNames, getComponent } from "@/lib/registry"
+import { getExamplesByComponent } from "@/lib/examples"
 import { InstallCommand } from "@/components/install-command"
 import { PropsTable } from "@/components/props-table"
 import { PlatformNotes } from "@/components/platform-notes"
 import { CodeBlock } from "@/components/code-block"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export function generateStaticParams() {
   return getComponentNames().map((name) => ({ name }))
@@ -83,6 +85,40 @@ export default async function ComponentPage({ params }: { params: Promise<{ name
             </div>
           </section>
         )}
+
+        {/* Related Examples */}
+        {(() => {
+          const relatedExamples = getExamplesByComponent(name)
+          return relatedExamples.length > 0 ? (
+            <section className="mt-10">
+              <h2 className="text-xl font-semibold mb-4">Related Examples</h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                See this component in action with these runnable examples:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {relatedExamples.map((ex) => (
+                  <Link
+                    key={ex.id}
+                    href={ex.href}
+                    className="group rounded-lg border p-4 hover:bg-accent/50 transition-colors"
+                  >
+                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors">
+                      {ex.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-1">{ex.description}</p>
+                    <div className="flex flex-wrap gap-1 mt-2">
+                      {ex.tags.map((tag) => (
+                        <span key={tag} className="text-xs bg-muted px-2 py-0.5 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null
+        })()}
 
         {/* Props */}
         {component.props && component.props.length > 0 && (

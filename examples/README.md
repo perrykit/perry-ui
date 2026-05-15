@@ -1,6 +1,16 @@
 # Examples
 
-This directory contains example Perry apps demonstrating Perry UI components in action.
+This directory contains **runnable** Perry apps demonstrating Perry UI components in action.
+
+## Running Examples
+
+Each example is a complete, runnable Perry app:
+
+```bash
+cd examples/counter
+bun install
+bun run dev
+```
 
 ## Available Examples
 
@@ -12,10 +22,6 @@ A simple counter app demonstrating:
 - VStack for vertical layout
 - State management with simple variables
 
-**Files:**
-- `src/main.ts` — Counter app implementation
-- `README.md` — Detailed explanation
-
 ### Todo App (`examples/todo-app/`)
 A functional todo app demonstrating:
 - Input component for text entry
@@ -25,22 +31,24 @@ A functional todo app demonstrating:
 - Dialog component for confirmations
 - State management with TypeScript interfaces
 
-**Files:**
-- `src/main.ts` — Todo app implementation
-- `README.md` — Detailed explanation
+## Example Setup
 
-## How to Use These Examples
+Each example requires Perry UI to be initialized. From the example directory:
 
-These are **code examples**, not runnable Perry apps. They demonstrate:
-- Component usage patterns
-- State management approaches
-- TypeScript typing
-- Layout patterns
+```bash
+# Initialize Perry UI in this directory
+bunx perry-ui init
 
-**To learn from these examples:**
-1. Read the source code in `src/main.ts`
-2. See how components are imported and used
-3. Copy patterns to your own Perry project
+# Add required components
+bunx perry-ui add button card label input checkbox dialog
+```
+
+## What Changed
+
+Previously these were code examples only. Now they're **runnable apps** you can:
+- Run locally with `bun run dev`
+- Modify and experiment with
+- Use as templates for your own apps
 
 ## To Build Your Own Perry App
 
