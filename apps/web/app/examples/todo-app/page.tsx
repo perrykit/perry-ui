@@ -1,8 +1,14 @@
 import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 import { getExampleById } from "@/lib/examples"
 import { ExamplePreview } from "@/components/example-preview"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+
+export const metadata: Metadata = {
+  title: "Todo App Example — Perry UI",
+  description: "A todo application demonstrating multiple Perry UI components including Input, Button, Card, Checkbox, and Dialog.",
+}
 
 const exampleCode = `// Todo App Example Code
 import { Window } from "perry/ui"

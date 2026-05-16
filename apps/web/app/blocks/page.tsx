@@ -1,5 +1,11 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { getAllBlocks } from "@/lib/registry"
+
+export const metadata: Metadata = {
+  title: "Blocks — Perry UI",
+  description: "Pre-built screen compositions using multiple Perry UI components. Auth screens, dashboards, data tables, and more.",
+}
 
 export default function BlocksPage() {
   const blocks = getAllBlocks()

@@ -1,9 +1,15 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CodeBlock } from "@/components/code-block"
 import { getRootRegistry, getComponentNames, getBlockNames } from "@/lib/registry"
+
+export const metadata: Metadata = {
+  title: "Perry UI — Native Component Library for Perry",
+  description: "shadcn-style component registry for building native TypeScript applications with Perry. Copy-paste components, tokens, and themes.",
+}
 
 const features = [
   { title: "Native-first", description: "Built around perry/ui. Real platform widgets, not web emulation." },

@@ -1,5 +1,11 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { getAllComponents } from "@/lib/registry"
+
+export const metadata: Metadata = {
+  title: "Components — Perry UI",
+  description: "Browse all Perry UI components: buttons, inputs, cards, dialogs, and more. Copy-paste native TypeScript components.",
+}
 
 const CATEGORIES: Record<string, { label: string; components: string[] }> = {
   foundation: {

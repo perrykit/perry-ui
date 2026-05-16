@@ -1,8 +1,14 @@
 import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 import { getExampleById } from "@/lib/examples"
 import { ExamplePreview } from "@/components/example-preview"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+
+export const metadata: Metadata = {
+  title: "Counter Example — Perry UI",
+  description: "A simple counter app demonstrating Perry UI Button and Heading components.",
+}
 
 const exampleCode = `// Counter Example Code
 import { Window } from "perry/ui"

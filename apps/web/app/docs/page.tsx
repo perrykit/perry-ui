@@ -1,4 +1,10 @@
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Documentation — Perry UI",
+  description: "Learn how to install, configure, and use Perry UI components, themes, and the CLI.",
+}
 
 const docsPages = [
   { href: "/docs/tutorial", title: "Tutorial", description: "Build your first Perry UI app in 10 minutes." },
@@ -17,7 +23,7 @@ const docsPages = [
 export default function DocsPage() {
   return (
     <div>
-      <h1>Welcome to Perry UI Documentation</h1>
+      <h1 className="text-3xl font-bold">Welcome to Perry UI Documentation</h1>
       <p className="text-lg text-muted-foreground mt-2 mb-8">
         Everything you need to build beautiful native apps with Perry UI.
       </p>

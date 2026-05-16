@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from "fs"
 import { join } from "path"
 import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 
 const CONTENT_DIR = join(process.cwd(), "content/docs")
@@ -20,6 +21,29 @@ function getDocContent(slug: string) {
     return readFileSync(join(CONTENT_DIR, `${slug}.mdx`), "utf-8")
   } catch {
     return null
+  }
+}
+
+const DOC_TITLES: Record<string, string> = {
+  "getting-started": "Getting Started",
+  installation: "Installation",
+  tutorial: "Tutorial",
+  cli: "CLI Reference",
+  registry: "Registry",
+  theming: "Theming",
+  tokens: "Design Tokens",
+  variants: "Variants",
+  accessibility: "Accessibility",
+  platforms: "Platforms",
+  contributing: "Contributing",
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const title = DOC_TITLES[slug] || slug
+  return {
+    title: `${title} — Perry UI Docs`,
+    description: `Perry UI documentation: ${title.toLowerCase()}`,
   }
 }
 

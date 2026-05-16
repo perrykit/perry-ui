@@ -1,5 +1,11 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { getAllExamples } from "@/lib/examples"
+
+export const metadata: Metadata = {
+  title: "Examples — Perry UI",
+  description: "Runnable Perry apps demonstrating Perry UI components in action.",
+}
 
 export default function ExamplesPage() {
   const examples = getAllExamples()

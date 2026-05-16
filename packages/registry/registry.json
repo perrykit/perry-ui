@@ -12,18 +12,18 @@
   },
   "items": [
     {
-      "name": "graphite",
+      "name": "neutral",
       "type": "theme",
-      "title": "Graphite",
-      "description": "Warm dark graphite palette.",
+      "title": "Neutral",
+      "description": "Pure neutral gray palette with no color tint.",
       "categories": [
         "themes"
       ],
       "dependencies": [],
       "files": [
-        "themes/graphite.json"
+        "themes/neutral.json"
       ],
-      "url": "/r/themes/graphite.json"
+      "url": "/r/themes/neutral.json"
     },
     {
       "name": "midnight",
@@ -40,20 +40,6 @@
       "url": "/r/themes/midnight.json"
     },
     {
-      "name": "neutral",
-      "type": "theme",
-      "title": "Neutral",
-      "description": "Pure neutral gray palette with no color tint.",
-      "categories": [
-        "themes"
-      ],
-      "dependencies": [],
-      "files": [
-        "themes/neutral.json"
-      ],
-      "url": "/r/themes/neutral.json"
-    },
-    {
       "name": "slate",
       "type": "theme",
       "title": "Slate",
@@ -66,6 +52,20 @@
         "themes/slate.json"
       ],
       "url": "/r/themes/slate.json"
+    },
+    {
+      "name": "graphite",
+      "type": "theme",
+      "title": "Graphite",
+      "description": "Warm dark graphite palette.",
+      "categories": [
+        "themes"
+      ],
+      "dependencies": [],
+      "files": [
+        "themes/graphite.json"
+      ],
+      "url": "/r/themes/graphite.json"
     },
     {
       "name": "zinc",
@@ -82,76 +82,6 @@
       "url": "/r/themes/zinc.json"
     },
     {
-      "name": "alert",
-      "type": "component",
-      "title": "Alert",
-      "description": "Displays an alert message with optional title and description.",
-      "categories": [
-        "components"
-      ],
-      "dependencies": [],
-      "files": [
-        "src/components/ui/alert.ts"
-      ],
-      "url": "/r/components/alert/registry.json"
-    },
-    {
-      "name": "avatar",
-      "type": "component",
-      "title": "Avatar",
-      "description": "A circular avatar that displays an image or fallback initials.",
-      "categories": [
-        "components"
-      ],
-      "dependencies": [],
-      "files": [
-        "src/components/ui/avatar.ts"
-      ],
-      "url": "/r/components/avatar/registry.json"
-    },
-    {
-      "name": "badge",
-      "type": "component",
-      "title": "Badge",
-      "description": "A small status indicator with variant styling.",
-      "categories": [
-        "components"
-      ],
-      "dependencies": [],
-      "files": [
-        "src/components/ui/badge.ts"
-      ],
-      "url": "/r/components/badge/registry.json"
-    },
-    {
-      "name": "button",
-      "type": "component",
-      "title": "Button",
-      "description": "A native Perry button with variants, sizes, tokens, and interaction states.",
-      "categories": [
-        "components"
-      ],
-      "dependencies": [],
-      "files": [
-        "src/components/ui/button.ts"
-      ],
-      "url": "/r/components/button/registry.json"
-    },
-    {
-      "name": "card",
-      "type": "component",
-      "title": "Card",
-      "description": "A container card with header, content, and footer sections.",
-      "categories": [
-        "components"
-      ],
-      "dependencies": [],
-      "files": [
-        "src/components/ui/card.ts"
-      ],
-      "url": "/r/components/card/registry.json"
-    },
-    {
       "name": "checkbox",
       "type": "component",
       "title": "Checkbox",
@@ -166,18 +96,18 @@
       "url": "/r/components/checkbox/registry.json"
     },
     {
-      "name": "dialog",
+      "name": "tooltip",
       "type": "component",
-      "title": "Dialog",
-      "description": "A modal dialog with title, description, content area, and action footer, built on Perry sheet APIs.",
+      "title": "Tooltip",
+      "description": "A hover tooltip for showing contextual information over any widget.",
       "categories": [
         "components"
       ],
       "dependencies": [],
       "files": [
-        "src/components/ui/dialog.ts"
+        "src/components/ui/tooltip.ts"
       ],
-      "url": "/r/components/dialog/registry.json"
+      "url": "/r/components/tooltip/registry.json"
     },
     {
       "name": "input",
@@ -194,46 +124,46 @@
       "url": "/r/components/input/registry.json"
     },
     {
-      "name": "label",
+      "name": "skeleton",
       "type": "component",
-      "title": "Label",
-      "description": "A styled text label for form fields and sections.",
+      "title": "Skeleton",
+      "description": "A placeholder loading indicator that mimics the shape of content yet to load.",
       "categories": [
         "components"
       ],
       "dependencies": [],
       "files": [
-        "src/components/ui/label.ts"
+        "src/components/ui/skeleton.ts"
       ],
-      "url": "/r/components/label/registry.json"
+      "url": "/r/components/skeleton/registry.json"
     },
     {
-      "name": "progress",
+      "name": "textarea",
       "type": "component",
-      "title": "Progress",
-      "description": "A progress bar that displays completion status for a task or process.",
+      "title": "Textarea",
+      "description": "A multi-line text input wrapping Perry's TextArea with consistent styling.",
       "categories": [
         "components"
       ],
       "dependencies": [],
       "files": [
-        "src/components/ui/progress.ts"
+        "src/components/ui/textarea.ts"
       ],
-      "url": "/r/components/progress/registry.json"
+      "url": "/r/components/textarea/registry.json"
     },
     {
-      "name": "radio",
+      "name": "alert",
       "type": "component",
-      "title": "Radio",
-      "description": "A radio group for single selection from a list of mutually exclusive options.",
+      "title": "Alert",
+      "description": "Displays an alert message with optional title and description.",
       "categories": [
         "components"
       ],
       "dependencies": [],
       "files": [
-        "src/components/ui/radio.ts"
+        "src/components/ui/alert.ts"
       ],
-      "url": "/r/components/radio/registry.json"
+      "url": "/r/components/alert/registry.json"
     },
     {
       "name": "select",
@@ -264,32 +194,18 @@
       "url": "/r/components/separator/registry.json"
     },
     {
-      "name": "sheet",
+      "name": "radio",
       "type": "component",
-      "title": "Sheet",
-      "description": "A sliding panel overlay that slides in from any edge of the viewport, with an optional header, scrollable content area, and action footer.",
+      "title": "Radio",
+      "description": "A radio group for single selection from a list of mutually exclusive options.",
       "categories": [
         "components"
       ],
       "dependencies": [],
       "files": [
-        "src/components/ui/sheet.ts"
+        "src/components/ui/radio.ts"
       ],
-      "url": "/r/components/sheet/registry.json"
-    },
-    {
-      "name": "skeleton",
-      "type": "component",
-      "title": "Skeleton",
-      "description": "A placeholder loading indicator that mimics the shape of content yet to load.",
-      "categories": [
-        "components"
-      ],
-      "dependencies": [],
-      "files": [
-        "src/components/ui/skeleton.ts"
-      ],
-      "url": "/r/components/skeleton/registry.json"
+      "url": "/r/components/radio/registry.json"
     },
     {
       "name": "switch",
@@ -306,6 +222,48 @@
       "url": "/r/components/switch/registry.json"
     },
     {
+      "name": "card",
+      "type": "component",
+      "title": "Card",
+      "description": "A container card with header, content, and footer sections.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/card.ts"
+      ],
+      "url": "/r/components/card/registry.json"
+    },
+    {
+      "name": "label",
+      "type": "component",
+      "title": "Label",
+      "description": "A styled text label for form fields and sections.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/label.ts"
+      ],
+      "url": "/r/components/label/registry.json"
+    },
+    {
+      "name": "badge",
+      "type": "component",
+      "title": "Badge",
+      "description": "A small status indicator with variant styling.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/badge.ts"
+      ],
+      "url": "/r/components/badge/registry.json"
+    },
+    {
       "name": "tabs",
       "type": "component",
       "title": "Tabs",
@@ -320,18 +278,46 @@
       "url": "/r/components/tabs/registry.json"
     },
     {
-      "name": "textarea",
+      "name": "dialog",
       "type": "component",
-      "title": "Textarea",
-      "description": "A multi-line text input wrapping Perry's TextArea with consistent styling.",
+      "title": "Dialog",
+      "description": "A modal dialog with title, description, content area, and action footer, built on Perry sheet APIs.",
       "categories": [
         "components"
       ],
       "dependencies": [],
       "files": [
-        "src/components/ui/textarea.ts"
+        "src/components/ui/dialog.ts"
       ],
-      "url": "/r/components/textarea/registry.json"
+      "url": "/r/components/dialog/registry.json"
+    },
+    {
+      "name": "progress",
+      "type": "component",
+      "title": "Progress",
+      "description": "A progress bar that displays completion status for a task or process.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/progress.ts"
+      ],
+      "url": "/r/components/progress/registry.json"
+    },
+    {
+      "name": "sheet",
+      "type": "component",
+      "title": "Sheet",
+      "description": "A sliding panel overlay that slides in from any edge of the viewport, with an optional header, scrollable content area, and action footer.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/sheet.ts"
+      ],
+      "url": "/r/components/sheet/registry.json"
     },
     {
       "name": "toast",
@@ -348,18 +334,32 @@
       "url": "/r/components/toast/registry.json"
     },
     {
-      "name": "tooltip",
+      "name": "button",
       "type": "component",
-      "title": "Tooltip",
-      "description": "A hover tooltip for showing contextual information over any widget.",
+      "title": "Button",
+      "description": "A native Perry button with variants, sizes, tokens, and interaction states.",
       "categories": [
         "components"
       ],
       "dependencies": [],
       "files": [
-        "src/components/ui/tooltip.ts"
+        "src/components/ui/button.ts"
       ],
-      "url": "/r/components/tooltip/registry.json"
+      "url": "/r/components/button/registry.json"
+    },
+    {
+      "name": "avatar",
+      "type": "component",
+      "title": "Avatar",
+      "description": "A circular avatar that displays an image or fallback initials.",
+      "categories": [
+        "components"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/ui/avatar.ts"
+      ],
+      "url": "/r/components/avatar/registry.json"
     },
     {
       "name": "auth-screen",
@@ -376,18 +376,18 @@
       "url": "/r/blocks/auth-screen/registry.json"
     },
     {
-      "name": "dashboard-layout",
+      "name": "form-wizard",
       "type": "block",
-      "title": "Dashboard Layout",
-      "description": "A complete dashboard layout with sidebar navigation, header, and content area.",
+      "title": "Form Wizard",
+      "description": "A multi-step form wizard with progress indicator and navigation.",
       "categories": [
         "blocks"
       ],
       "dependencies": [],
       "files": [
-        "src/components/blocks/dashboard-layout.ts"
+        "src/components/blocks/form-wizard.ts"
       ],
-      "url": "/r/blocks/dashboard-layout/registry.json"
+      "url": "/r/blocks/form-wizard/registry.json"
     },
     {
       "name": "data-table",
@@ -404,32 +404,18 @@
       "url": "/r/blocks/data-table/registry.json"
     },
     {
-      "name": "form-wizard",
+      "name": "dashboard-layout",
       "type": "block",
-      "title": "Form Wizard",
-      "description": "A multi-step form wizard with progress indicator and navigation.",
+      "title": "Dashboard Layout",
+      "description": "A complete dashboard layout with sidebar navigation, header, and content area.",
       "categories": [
         "blocks"
       ],
       "dependencies": [],
       "files": [
-        "src/components/blocks/form-wizard.ts"
+        "src/components/blocks/dashboard-layout.ts"
       ],
-      "url": "/r/blocks/form-wizard/registry.json"
-    },
-    {
-      "name": "notification-list",
-      "type": "block",
-      "title": "Notification List",
-      "description": "A list of notifications with actions for alerts, toasts, and updates.",
-      "categories": [
-        "blocks"
-      ],
-      "dependencies": [],
-      "files": [
-        "src/components/blocks/notification-list.ts"
-      ],
-      "url": "/r/blocks/notification-list/registry.json"
+      "url": "/r/blocks/dashboard-layout/registry.json"
     },
     {
       "name": "settings-window",
@@ -450,6 +436,20 @@
         "src/components/blocks/settings-window.ts"
       ],
       "url": "/r/blocks/settings-window/registry.json"
+    },
+    {
+      "name": "notification-list",
+      "type": "block",
+      "title": "Notification List",
+      "description": "A list of notifications with actions for alerts, toasts, and updates.",
+      "categories": [
+        "blocks"
+      ],
+      "dependencies": [],
+      "files": [
+        "src/components/blocks/notification-list.ts"
+      ],
+      "url": "/r/blocks/notification-list/registry.json"
     }
   ]
 }

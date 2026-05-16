@@ -90,7 +90,11 @@ export function SearchBar() {
                         <div>
                           <div className="font-medium text-sm">{item.title || item.name}</div>
                           <div className="text-xs text-muted-foreground mt-0.5">
-                            {item.description?.slice(0, 60)}...
+                            {item.description
+                              ? item.description.length > 60
+                                ? `${item.description.slice(0, 60)}...`
+                                : item.description
+                              : ""}
                           </div>
                         </div>
                         <span className="text-xs text-muted-foreground capitalize px-2 py-1 rounded bg-secondary">

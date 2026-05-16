@@ -1,21 +1,7 @@
 "use server"
 
-import { readFileSync, existsSync } from "fs"
-import { join, resolve } from "path"
+import { readJSON, resolvePath } from "@/lib/registry-utils"
 import type { RegistryRoot, RegistryItem } from "../../../packages/registry/types"
-
-const REGISTRY_DIR = resolve(process.cwd(), "../../packages/registry")
-const DIST_DIR = resolve(process.cwd(), "../../dist")
-
-function readJSON<T>(path: string): T {
-  return JSON.parse(readFileSync(path, "utf-8"))
-}
-
-function resolvePath(...segments: string[]): string {
-  const distPath = join(DIST_DIR, ...segments)
-  if (existsSync(distPath)) return distPath
-  return join(REGISTRY_DIR, ...segments)
-}
 
 // Server action to get root registry for client components
 export async function getRootRegistryAction(): Promise<RegistryRoot> {

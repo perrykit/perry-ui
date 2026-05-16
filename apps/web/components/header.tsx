@@ -12,6 +12,9 @@ import { MobileNavLinks } from "@/components/mobile-nav-links"
 
 const navLinks = [
   { href: "/docs/installation", label: "Guides" },
+  { href: "/components", label: "Components" },
+  { href: "/blocks", label: "Blocks" },
+  { href: "/examples", label: "Examples" },
 ]
 
 export function Header() {

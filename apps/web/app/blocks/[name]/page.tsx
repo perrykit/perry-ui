@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 import { getBlockNames, getBlock } from "@/lib/registry"
 import { InstallCommand } from "@/components/install-command"
 import { PropsTable } from "@/components/props-table"
@@ -8,6 +9,19 @@ import Link from "next/link"
 
 export function generateStaticParams() {
   return getBlockNames().map((name) => ({ name }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ name: string }> }): Promise<Metadata> {
+  const { name } = await params
+  try {
+    const block = getBlock(name)
+    return {
+      title: `${block.title || block.name} — Perry UI`,
+      description: block.description || `${block.name} block for Perry UI`,
+    }
+  } catch {
+    return { title: "Block — Perry UI" }
+  }
 }
 
 export default async function BlockPage({ params }: { params: Promise<{ name: string }> }) {

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 import { getComponentNames, getComponent } from "@/lib/registry"
 import { getExamplesByComponent } from "@/lib/examples"
 import { InstallCommand } from "@/components/install-command"
@@ -9,6 +10,19 @@ import Link from "next/link"
 
 export function generateStaticParams() {
   return getComponentNames().map((name) => ({ name }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ name: string }> }): Promise<Metadata> {
+  const { name } = await params
+  try {
+    const component = getComponent(name)
+    return {
+      title: `${component.title || component.name} — Perry UI`,
+      description: component.description || `${component.name} component for Perry UI`,
+    }
+  } catch {
+    return { title: "Component — Perry UI" }
+  }
 }
 
 export default async function ComponentPage({ params }: { params: Promise<{ name: string }> }) {
@@ -39,8 +53,6 @@ export default async function ComponentPage({ params }: { params: Promise<{ name
         <div className="mt-6">
           <InstallCommand items={name} />
         </div>
-
-        {/* Usage */}
 
         {/* Usage */}
         <section className="mt-10">
