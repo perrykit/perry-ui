@@ -58,8 +58,6 @@ async function DocPageInner({ params }: { params: Promise<{ slug: string }> }) {
   if (!source) notFound()
 
   return (
-    <div className="prose prose-zinc dark:prose-invert max-w-none">
-      <MDXRemote source={source} />
-    </div>
+    <MDXRemote source={source} />
   )
 }
