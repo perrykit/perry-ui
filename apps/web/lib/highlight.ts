@@ -5,7 +5,7 @@ let highlighterPromise: Promise<Highlighter> | null = null
 function getHighlighter() {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
-      themes: ["github-dark", "github-light"],
+      themes: ["catppuccin-mocha", "github-light"],
       langs: ["typescript", "tsx", "bash", "json"],
     })
   }
@@ -20,7 +20,7 @@ export async function highlightCode(code: string, language: string = "typescript
   return highlighter.codeToHtml(code, {
     lang,
     themes: {
-      dark: "github-dark",
+      dark: "catppuccin-mocha",
       light: "github-light",
     },
   })
