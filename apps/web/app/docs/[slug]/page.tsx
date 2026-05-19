@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import remarkGfm from "remark-gfm"
+import { mdxComponents } from "@/components/mdx-components"
 
 const CONTENT_DIR = join(process.cwd(), "content/docs")
 
@@ -59,6 +60,6 @@ async function DocPageInner({ params }: { params: Promise<{ slug: string }> }) {
   if (!source) notFound()
 
   return (
-    <MDXRemote source={source} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+    <MDXRemote source={source} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} components={mdxComponents} />
   )
 }
