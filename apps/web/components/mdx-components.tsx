@@ -67,10 +67,8 @@ function Table({ children, ...props }: React.ComponentProps<"table">) {
 
 function Thead({ children, ...props }: React.ComponentProps<"thead">) {
   return (
-    <thead {...props}>
-      <tr className="border-b bg-muted/50">
-        {children}
-      </tr>
+    <thead className="border-b bg-muted/50" {...props}>
+      {children}
     </thead>
   )
 }
