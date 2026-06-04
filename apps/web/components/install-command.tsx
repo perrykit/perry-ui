@@ -9,7 +9,7 @@ export function InstallCommand({ items }: { items: string | string[] }) {
   const cmd = Array.isArray(items) ? `bunx perry-ui add ${items.join(" ")}` : `bunx perry-ui add ${items}`
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(cmd)
+    navigator.clipboard.writeText(cmd).catch(() => {})
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }

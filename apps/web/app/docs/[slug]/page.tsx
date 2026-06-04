@@ -19,6 +19,7 @@ export function generateStaticParams() {
 }
 
 function getDocContent(slug: string) {
+  if (!/^[a-z0-9-]+$/.test(slug)) return null
   try {
     return readFileSync(join(CONTENT_DIR, `${slug}.mdx`), "utf-8")
   } catch {

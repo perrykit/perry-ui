@@ -1,8 +1,8 @@
 import { ZStack, Text, State } from "perry/ui"
 import type { WidgetHandle } from "@/lib/perry-ui/platform"
-import { applyStyles, widgetSetTooltip } from "@/lib/perry-ui/platform"
+import { applyStyles } from "@/lib/perry-ui/platform"
 import { useTheme } from "@/lib/perry-ui/theme"
-import { setAccessibilityRole } from "@/lib/perry-ui/accessibility"
+import { setAccessibilityLabel, setAccessibilityRole } from "@/lib/perry-ui/accessibility"
 
 export type TooltipProps = {
   content: string
@@ -14,8 +14,8 @@ export function Tooltip(props: TooltipProps): WidgetHandle {
   const theme = useTheme()
   const delay = props.delay ?? 500
 
-  // Use Perry's native tooltip as the primary mechanism
-  widgetSetTooltip(props.children, props.content)
+  // Use accessibility label as the primary tooltip mechanism
+  setAccessibilityLabel(props.children, props.content)
 
   // State-driven visibility for the styled overlay bubble
   const visible = State(false)

@@ -72,7 +72,7 @@ export function SheetHeader(props: SheetHeaderProps): WidgetHandle {
   const header = HStack(8, headerChildren)
   applyStyles(header, {
     padding: 0,
-    justify: "space-between",
+    justify: "between",
     align: "center",
   }, theme)
 
@@ -84,8 +84,6 @@ export function SheetContent(props: SheetContentProps): WidgetHandle {
   const content = VStack(8, props.children ?? [])
   applyStyles(content, {
     padding: 0,
-    flex: 1,
-    overflow: "auto",
   }, theme)
   return content
 }
@@ -159,9 +157,9 @@ export function Sheet(props: SheetProps): WidgetHandle {
   applyStyles(body, {
     background: "popover",
     foreground: "popoverForeground",
-    border: 1,
-    borderColor: "border",
-    radius: borderRadiusMap[side],
+    border: "border",
+    borderWidth: 1,
+    radius: "lg",
     padding: 24,
     shadow: "lg",
   }, theme)

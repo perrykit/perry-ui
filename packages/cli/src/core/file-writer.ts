@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, writeFileSync, readFileSync } from "fs"
-import { dirname, join } from "path"
+import { dirname, join, resolve } from "path"
 import { logger } from "./logger"
 import { confirm } from "./prompts"
 
@@ -18,7 +18,12 @@ export async function writeFiles(
   const results: WriteResult[] = []
 
   for (const file of files) {
-    const fullPath = join(cwd, file.target)
+    const fullPath = resolve(cwd, file.target)
+    if (!fullPath.startsWith(resolve(cwd))) {
+      logger.error(`  Path traversal detected: ${file.target}`)
+      results.push({ path: file.target, status: "skipped" })
+      continue
+    }
     const exists = existsSync(fullPath)
 
     if (options.dryRun) {

@@ -55,14 +55,8 @@ export function setAccessibilityLabel(widget: WidgetHandle, label: string): void
 export function setAccessibilityRole(widget: WidgetHandle, role: A11yRole): void {
   // Perry does not yet expose a dedicated role API.
   // Some platforms infer role from widget type (Button → button, etc.)
-  // Store the intent for future platform support.
-  try {
-    // When Perry adds widgetSetA11yRole, it goes here:
-    // widgetSetA11yRole(widget, role)
-    widgetSetTooltip(widget, role)
-  } catch {
-    // No-op on unsupported platforms
-  }
+  // NOTE: Do NOT call widgetSetTooltip here — it would overwrite the
+  // accessibility label set by setAccessibilityLabel.
   void widget
   void role
 }

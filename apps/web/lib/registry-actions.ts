@@ -3,6 +3,19 @@
 import { readJSON, resolvePath } from "@/lib/registry-utils"
 import type { RegistryRoot, RegistryItem } from "../../../packages/registry/types"
 
+// Cache the registry in module scope to avoid re-reading from disk on every call
+let cachedRegistry: RegistryRoot | null = null
+let cacheTime = 0
+const CACHE_TTL = 60_000 // 1 minute
+
+function getRegistry(): RegistryRoot {
+  const now = Date.now()
+  if (cachedRegistry && now - cacheTime < CACHE_TTL) return cachedRegistry
+  cachedRegistry = readJSON<RegistryRoot>(resolvePath("registry.json"))
+  cacheTime = now
+  return cachedRegistry
+}
+
 // Server action to get root registry for client components
 export async function getRootRegistryAction(): Promise<RegistryRoot> {
   return readJSON<RegistryRoot>(resolvePath("registry.json"))
@@ -19,7 +32,7 @@ export async function getComponentAction(name: string): Promise<RegistryItem | n
 
 // Server action to search registry items for the search bar
 export async function searchRegistryAction(query: string) {
-  const registry = readJSON<RegistryRoot>(resolvePath("registry.json"))
+  const registry = getRegistry()
 
   if (!query.trim()) return []
 

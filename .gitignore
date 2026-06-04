@@ -5,3 +5,8 @@ dist/
 .next/
 .DS_Store
 .superstack/
+.env
+.env.*
+!.env.example
+*.log
+.swarm/

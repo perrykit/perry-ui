@@ -19,11 +19,15 @@ export function getComponentNames(): string[] {
 }
 
 export function getComponent(name: string): RegistryItem {
+  if (!/^[a-z0-9-]+$/.test(name)) throw new Error(`Invalid component name: ${name}`)
   return readJSON<RegistryItem>(resolvePath("components", name, "registry.json"))
 }
 
 export function getAllComponents(): RegistryItem[] {
-  return getComponentNames().map((name) => getComponent(name))
+  return getComponentNames().map((name) => {
+    try { return getComponent(name) }
+    catch { return null }
+  }).filter((item): item is RegistryItem => item !== null)
 }
 
 export function getBlockNames(): string[] {
@@ -35,11 +39,15 @@ export function getBlockNames(): string[] {
 }
 
 export function getBlock(name: string): RegistryItem {
+  if (!/^[a-z0-9-]+$/.test(name)) throw new Error(`Invalid block name: ${name}`)
   return readJSON<RegistryItem>(resolvePath("blocks", name, "registry.json"))
 }
 
 export function getAllBlocks(): RegistryItem[] {
-  return getBlockNames().map((name) => getBlock(name))
+  return getBlockNames().map((name) => {
+    try { return getBlock(name) }
+    catch { return null }
+  }).filter((item): item is RegistryItem => item !== null)
 }
 
 export function getThemeNames(): string[] {

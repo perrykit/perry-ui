@@ -117,9 +117,11 @@ export default function HomePage() {
                   </Badge>
                 </Link>
               ))}
-              <Link href="/components">
-                <Badge variant="outline" className="cursor-pointer">+{components.length - 10} more</Badge>
-              </Link>
+              {components.length > 10 && (
+                <Link href="/components">
+                  <Badge variant="outline" className="cursor-pointer">+{components.length - 10} more</Badge>
+                </Link>
+              )}
             </div>
           </div>
         </div>

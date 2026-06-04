@@ -4,7 +4,7 @@
  * A sortable table with pagination.
  */
 
-import { VStack } from "perry/ui"
+import { VStack, HStack } from "perry/ui"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"

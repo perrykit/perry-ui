@@ -11,6 +11,12 @@ import type { Color, ThemeTokens } from "./tokens"
 
 export function hexToColor(hex: string): Color {
   const h = hex.replace("#", "")
+  if (h.length === 3) {
+    const r = parseInt(h[0] + h[0], 16) / 255
+    const g = parseInt(h[1] + h[1], 16) / 255
+    const b = parseInt(h[2] + h[2], 16) / 255
+    return { r, g, b, a: 1 }
+  }
   const r = parseInt(h.substring(0, 2), 16) / 255
   const g = parseInt(h.substring(2, 4), 16) / 255
   const b = parseInt(h.substring(4, 6), 16) / 255
@@ -19,7 +25,8 @@ export function hexToColor(hex: string): Color {
 }
 
 export function colorToHex(color: Color): string {
-  const toHex = (v: number) => Math.round(v * 255).toString(16).padStart(2, "0")
+  const clamp = (v: number) => Math.max(0, Math.min(1, v))
+  const toHex = (v: number) => Math.round(clamp(v) * 255).toString(16).padStart(2, "0")
   if (color.a < 1) {
     return `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}${toHex(color.a)}`
   }

@@ -61,7 +61,8 @@ export function Progress(props: ProgressProps): WidgetHandle {
 
   applyHeight(fill, 8)
   applyRadius(fill, resolveRadius("full", theme) ?? 9999)
-  applyWidth(fill, percentage)
+  // Use percentage string for relative width within the track
+  applyStyles(fill, { width: `${percentage}%` }, theme)
 
   const track = HStack(0, [fill])
 

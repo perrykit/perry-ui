@@ -4,7 +4,7 @@
  * List of toast/alert notifications with actions.
  */
 
-import { VStack } from "perry/ui"
+import { VStack, HStack } from "perry/ui"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Card } from "@/components/ui/card"
@@ -75,24 +75,24 @@ export function NotificationList(props: NotificationListProps) {
               }),
 
               // Actions
-              if (notification.actions && notification.actions.length > 0) {
-                HStack(8, [
-                  ...notification.actions.map(action =>
+              ...(notification.actions && notification.actions.length > 0
+                ? [HStack(8, [
+                    ...notification.actions.map(action =>
+                      Button({
+                        children: action.label,
+                        variant: "outline",
+                        size: "sm",
+                        onPress: () => onAction(notification.id, action.value)
+                      })
+                    ),
                     Button({
-                      children: action.label,
-                      variant: "outline",
+                      children: "Dismiss",
+                      variant: "ghost",
                       size: "sm",
-                      onPress: () => onAction(notification.id, action.value)
+                      onPress: () => onDismiss(notification.id)
                     })
-                  ),
-                  Button({
-                    children: "Dismiss",
-                    variant: "ghost",
-                    size: "sm",
-                    onPress: () => onDismiss(notification.id)
-                  })
-                ])
-              }
+                  ])]
+                : [])
             ])
           }
         ]

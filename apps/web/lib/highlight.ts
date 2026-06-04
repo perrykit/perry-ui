@@ -7,6 +7,9 @@ function getHighlighter() {
     highlighterPromise = createHighlighter({
       themes: ["catppuccin-mocha", "github-light"],
       langs: ["typescript", "tsx", "bash", "json"],
+    }).catch((err) => {
+      highlighterPromise = null
+      throw err
     })
   }
   return highlighterPromise

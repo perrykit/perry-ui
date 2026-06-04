@@ -5,7 +5,7 @@
  * static registry JSON files to dist/.
  */
 
-import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from "fs"
+import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, cpSync } from "fs"
 import { join, resolve } from "path"
 
 const ROOT = resolve(__dirname, "..")
@@ -22,9 +22,20 @@ mkdirSync(join(DIST_DIR, "blocks"), { recursive: true })
 mkdirSync(join(DIST_DIR, "themes"), { recursive: true })
 mkdirSync(join(DIST_DIR, "r"), { recursive: true })
 
+// ── Helpers ────────────────────────────────────────────────────────────
+
+function readJSON<T>(filePath: string): T {
+  try {
+    return JSON.parse(readFileSync(filePath, "utf-8"))
+  } catch (err) {
+    console.error(`  ERROR: Failed to parse ${filePath}: ${err instanceof Error ? err.message : err}`)
+    throw err
+  }
+}
+
 // ── Read root registry ─────────────────────────────────────────────────
 
-const rootRegistry = JSON.parse(readFileSync(join(REGISTRY_DIR, "registry.json"), "utf-8"))
+const rootRegistry = readJSON<{ items?: unknown[] } & Record<string, unknown>>(join(REGISTRY_DIR, "registry.json"))
 const items: Array<Record<string, unknown>> = []
 
 // ── Process Themes ─────────────────────────────────────────────────────
@@ -35,8 +46,8 @@ if (existsSync(themesDir)) {
   console.log(`Themes: ${themeFiles.length}`)
 
   for (const file of themeFiles) {
-    const themeData = JSON.parse(readFileSync(join(themesDir, file), "utf-8"))
-    const themeName = themeData.name || file.replace(".json", "")
+    const themeData = readJSON<Record<string, unknown>>(join(themesDir, file))
+    const themeName = (themeData.name as string) || file.replace(".json", "")
 
     // Copy theme to dist
     copyFileSync(join(themesDir, file), join(DIST_DIR, "themes", file))
@@ -71,15 +82,24 @@ if (existsSync(componentsDir)) {
     const regPath = join(componentsDir, dir, "registry.json")
     if (!existsSync(regPath)) continue
 
-    const item = JSON.parse(readFileSync(regPath, "utf-8"))
+    let item: Record<string, unknown>
+    try {
+      item = readJSON<Record<string, unknown>>(regPath)
+    } catch {
+      console.warn(`  SKIP: ${dir} (invalid registry.json)`)
+      continue
+    }
 
     // Inline source file content
-    if (item.files && Array.isArray(item.files)) {
-      for (const file of item.files) {
+    const files = item.files as Array<Record<string, unknown>> | undefined
+    if (files && Array.isArray(files)) {
+      for (const file of files) {
         if (file.sourcePath) {
-          const sourceFullPath = join(componentsDir, dir, file.sourcePath)
+          const sourceFullPath = join(componentsDir, dir, file.sourcePath as string)
           if (existsSync(sourceFullPath)) {
             file.content = readFileSync(sourceFullPath, "utf-8")
+          } else {
+            console.warn(`  WARN: Missing source file for ${dir}: ${file.sourcePath}`)
           }
         }
       }
@@ -96,9 +116,9 @@ if (existsSync(componentsDir)) {
       type: item.type,
       title: item.title,
       description: item.description,
-      categories: ["components", ...(item.categories || [])],
+      categories: ["components", ...((item.categories as string[]) || [])],
       dependencies: item.dependencies || [],
-      files: (item.files || []).map((f: { target: string }) => f.target),
+      files: (files || []).map((f: Record<string, unknown>) => f.target),
       url: `/r/components/${dir}/registry.json`,
     })
 
@@ -120,15 +140,24 @@ if (existsSync(blocksDir)) {
     const regPath = join(blocksDir, dir, "registry.json")
     if (!existsSync(regPath)) continue
 
-    const item = JSON.parse(readFileSync(regPath, "utf-8"))
+    let item: Record<string, unknown>
+    try {
+      item = readJSON<Record<string, unknown>>(regPath)
+    } catch {
+      console.warn(`  SKIP: ${dir} (invalid registry.json)`)
+      continue
+    }
 
     // Inline source file content
-    if (item.files && Array.isArray(item.files)) {
-      for (const file of item.files) {
+    const files = item.files as Array<Record<string, unknown>> | undefined
+    if (files && Array.isArray(files)) {
+      for (const file of files) {
         if (file.sourcePath) {
-          const sourceFullPath = join(blocksDir, dir, file.sourcePath)
+          const sourceFullPath = join(blocksDir, dir, file.sourcePath as string)
           if (existsSync(sourceFullPath)) {
             file.content = readFileSync(sourceFullPath, "utf-8")
+          } else {
+            console.warn(`  WARN: Missing source file for ${dir}: ${file.sourcePath}`)
           }
         }
       }
@@ -146,7 +175,7 @@ if (existsSync(blocksDir)) {
       description: item.description,
       categories: ["blocks"],
       dependencies: item.registryDependencies || [],
-      files: (item.files || []).map((f: { target: string }) => f.target),
+      files: (files || []).map((f: Record<string, unknown>) => f.target),
       url: `/r/blocks/${dir}/registry.json`,
     })
 
@@ -159,11 +188,14 @@ if (existsSync(blocksDir)) {
 rootRegistry.items = items
 writeFileSync(join(DIST_DIR, "registry.json"), JSON.stringify(rootRegistry, null, 2))
 
-// Also write back to source so dev:web works without a prior build
-writeFileSync(join(REGISTRY_DIR, "registry.json"), JSON.stringify(rootRegistry, null, 2))
+// Backup source registry before overwriting (for dev:web compat)
+const sourceRegistryPath = join(REGISTRY_DIR, "registry.json")
+const backupPath = join(REGISTRY_DIR, "registry.json.bak")
+copyFileSync(sourceRegistryPath, backupPath)
+writeFileSync(sourceRegistryPath, JSON.stringify(rootRegistry, null, 2))
 
 // ── Mirror dist/ into dist/r/ for URL paths (/r/registry.json, etc.) ───
-import { cpSync } from "fs"
+
 const rDir = join(DIST_DIR, "r")
 mkdirSync(rDir, { recursive: true })
 cpSync(join(DIST_DIR, "registry.json"), join(rDir, "registry.json"))

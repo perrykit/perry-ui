@@ -16,13 +16,14 @@ RUN bun run build:registry
 
 # ── Production ──────────────────────────────────────────────────────
 FROM oven/bun:1 AS runner
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
-COPY --from=builder /app/dist ./dist
+COPY --from=builder --chown=appuser:appgroup /app/dist ./dist
 COPY --chmod=755 <<'EOF' /app/serve.ts
 const port = parseInt(process.env.PORT || "3000")
 const distDir = new URL("./dist/", import.meta.url).pathname
@@ -49,12 +50,17 @@ Bun.serve({
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, OPTIONS",
-          "Content-Type": "application/json",
         },
       })
     }
 
-    return new Response("Not Found", { status: 404 })
+    return new Response("Not Found", {
+      status: 404,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+      },
+    })
   },
 })
 
@@ -62,4 +68,5 @@ console.log(`Registry serving on :${port}`)
 EOF
 
 EXPOSE 3000
+USER appuser
 CMD ["bun", "run", "/app/serve.ts"]

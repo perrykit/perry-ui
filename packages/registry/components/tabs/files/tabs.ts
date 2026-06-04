@@ -47,8 +47,8 @@ export function Tabs(props: TabsProps): WidgetHandle {
 
   const tabBar = HStack(0, tabButtons)
   applyStyles(tabBar, {
-    borderBottom: "border",
-    borderBottomWidth: 1,
+    border: "border",
+    borderWidth: 1,
     align: "center",
   }, theme)
 
@@ -72,8 +72,8 @@ export function TabTrigger(props: TabTriggerProps): WidgetHandle {
     fontWeight: props.active ? "medium" : "normal",
     paddingX: 16,
     paddingY: 8,
-    borderBottom: props.active ? "primary" : "transparent",
-    borderBottomWidth: props.active ? 2 : 0,
+    border: props.active ? "primary" : "transparent",
+    borderWidth: props.active ? 2 : 0,
   }, theme)
 
   setAccessibilityRole(button, "tab")

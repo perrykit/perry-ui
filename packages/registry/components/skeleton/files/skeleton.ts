@@ -2,6 +2,7 @@ import { VStack } from "perry/ui"
 import type { WidgetHandle } from "@/lib/perry-ui/platform"
 import { applyStyles, applyBg, applyRadius } from "@/lib/perry-ui/platform"
 import { useTheme } from "@/lib/perry-ui/theme"
+import { resolveColor, resolveRadius } from "@/lib/perry-ui/variants"
 import { setAccessibilityRole } from "@/lib/perry-ui/accessibility"
 
 export type SkeletonRadius = "none" | "sm" | "md" | "lg" | "full"
@@ -51,8 +52,11 @@ export function Skeleton(props?: SkeletonProps): WidgetHandle {
     opacity: 0.5,
   }, theme)
 
-  applyBg(el, "muted", theme)
-  applyRadius(el, finalRadius, theme)
+  const bgColor = resolveColor("muted", theme)
+  if (bgColor) applyBg(el, bgColor)
+
+  const radiusVal = resolveRadius(finalRadius, theme)
+  if (radiusVal !== undefined) applyRadius(el, radiusVal)
 
   setAccessibilityRole(el, "img")
   applyStyles(el, {
